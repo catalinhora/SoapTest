@@ -1,21 +1,56 @@
 "use strict";
 
 var soap = require('strong-soap').soap;
-// wsdl of the web service this client is going to invoke. For local wsdl you can use, url = './wsdls/stockquote.wsdl'
-var url = 'http://www.dneonline.com/calculator.asmx?WSDL';
+const fs = require('fs');
+var assert = require('assert');
+var paramData = require('./helpers/helpers.js');
+const chalk = require('chalk');
 
-var requestArgs = {
-  intA: 1,
-  intB: 2
-};
+// wsdl of the web service this client is going to invoke.
+var url = 'http://dev-app23.hmm.lan:65098/RuleEngineService?wsdl';
+const em = s => chalk.bold(s);
 
 var options = {};
 soap.createClient(url, options, function(err, client) {
-  var method = client['Add'];
-  method(requestArgs, function(err, result, envelope, soapHeader) {
+  var method = client['status']; 
+  method(function(err, result, envelope, soapHeader) {
+     //response envelope
+     console.log('Response Envelope: \n' + envelope);
+     //response result
+     console.log('Result: \n' + JSON.stringify(result));
+     var statusResult = result.statusResult;
+     assert.strictEqual(statusResult, true, `Status Result is: ${em(statusResult)} instead of true!`);
+
+ if(result.statusResult){
+    soap.createClient(url, options, function(err, client) {
+    var method = client['changeRulefiles'];
+    method(paramData.requestArgsChangeRuleFile, function(err, result, envelope, soapHeader) {
+    //response envelope
+    console.log('Response Envelope: \n' + envelope);
+    //'result' is the response body
+    console.log('Result: \n' + JSON.stringify(result));
+    });
+   });
+  }
+ });
+});
+
+soap.createClient(url, options, function(err, client) {
+  var method = client['showRuleFile'];
+  method(paramData.requestArgsShowRuleFile, function(err, result, envelope, soapHeader) {
     //response envelope
     console.log('Response Envelope: \n' + envelope);
     //'result' is the response body
     console.log('Result: \n' + JSON.stringify(result));
   });
 });
+
+// soap.createClient(url, options, function(err, client) {
+//   var method = client['makeFull'];
+//   method(paramData, function(err, result, envelope, soapHeader) {
+//     //response envelope
+//     console.log('Response Envelope: \n' + envelope);
+//     //'result' is the response body
+//     console.log('Result: \n' + JSON.stringify(result));
+//   });
+// });
