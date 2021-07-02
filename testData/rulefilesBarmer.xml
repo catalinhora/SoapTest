@@ -1,0 +1,3144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rulefiles>
+<rulefile>
+<companyCode>104940005</companyCode>
+<ruleType>INIT</ruleType>
+<body>
+
+SETVAR [AUTORETURN_HERKUNFT]:=/x3:ekv/x3:autogenehmigung/x3:autoreturn/x3:herkunft
+SETVAR [AUTORETURN_ERT]:=/x3:ekv/x3:autogenehmigung/x3:autoreturn/x3:ert
+SETVAR [AUTORETURN_AGG]:=/x3:ekv/x3:autogenehmigung/x3:autoreturn/x3:agg
+SETVAR [AUTORETURN_HERKUNFT]:=/x3:ekv/x3:autogenehmigung/x3:autoreturn/x3:herkunft
+SETVAR [AUTORETURN_HAS_RECEIVED_HM]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:has_received_hm
+SETVAR [AUTORETURN_HAS_ORDER]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:has_order
+SETVAR [AUTORETURN_SUPPLY_UNIT_IS_READY]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:supply_unit_is_ready
+SETVAR [AUTO_RETURN_CHECK_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:auto_return_check_message
+
+
+SETVAR [AUTORETURN_ORIGIN_ORDER_STATUS]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:origin_order_status
+
+SETVAR [AUTORETURN_HMV_RELEVANT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmv_relevant
+SETVAR [AUTORETURN_HMV_AUTO_APPROVAL]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmv_auto_approval
+
+SETVAR [LE_INTERN]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:intern_lieferant/x3:ik
+
+
+
+
+
+SETVAR [HAUPT_HM_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:mwst_prozent
+SETVAR [HAUPT_VP_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:mwst_prozent
+
+SETVAR [FIRST_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:first_message
+SETVAR [VE_NR]:=1
+SETVAR [POS_NR]:=1
+
+
+
+
+
+
+SETVAR [HAUPT_HM_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:mwst_prozent
+SETVAR [HAUPT_VP_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:mwst_prozent
+
+SETVAR [IS_NGPV]:=/x3:ekv/x3:autogenehmigung/x3:isNgpv
+SETVAR [FIRST_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:first_message
+SETVAR [VE_NR]:=1
+SETVAR [POS_NR]:=1
+
+
+
+
+
+#-----------------------------------------------------
+# HMM Deutschland GmbH
+# Global X3_VARS
+#-----------------------------------------------------
+SETVAR [EXIT_GROUP]:=&quot;&quot;
+SETVAR [EXIT_CODE]:=&quot;&quot;
+SETVAR [HM_REF_FOUND]:=0
+SETVAR [SEARCH_LOWESTPRICE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:find_lowest 
+ASSIGN{[SEARCH_LOWESTPRICE]:=1}
+
+SETVAR [OVERRIDE_BOOKING_ACCOUNT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:override_booking_account
+ASSIGN{[OVERRIDE_BOOKING_ACCOUNT]:=1}
+WRITE_X3TAGS(&quot;OVERRIDE_BOOKING_ACCOUNT&quot;)
+
+SETVAR [POP_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:ag_infos/x3:popup_message
+SETVAR [OLD_RESULT]:=/x3:ekv/x3:autogenehmigung/x3:old_result
+SETVAR [SET_AG]:=/x3:ekv/x3:doc/x3:ag
+
+SETVAR [XVD_HMV]:=/x3:ekv/x3:autogenehmigung/x3:hmv
+SETVAR [EKV_HM_HMV]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[1]/x3:positionen/x3:position[1]/x3:hm/x3:hmv  
+SETVAR [X3_DE_PAY]:=/x3:ekv/x3:doc/x3:dePay
+SETVAR [X3_STEP]:=/x3:ekv/x3:zhp_process/x3:step 
+SETVAR [X3_TIMESTAMP]:=/x3:ekv/x3:doc/x3:send_timestamp
+SETVAR [X3_SOFTWARE]:=/x3:ekv/x3:doc/x3:partner_software
+SETVAR [X3_PROCESS]:=/x3:ekv/x3:zhp_process/x3:process
+SETVAR [X3_ORIGIN]:=/x3:ekv/x3:doc/x3:zhp_origin
+
+SETVAR [ZHP_ORDER_ID]:=/x3:ekv/x3:doc/x3:zhp_order_id
+SETVAR [ZHP_ORDER_ID2]:=/x3:ekv/x3:zhp_process/x3:zhp_order_id
+
+SETVAR [ZHP_MESSAGE]:=/x3:ekv/x3:zhp_process/x3:message
+
+SETVAR [HAS_REQUEST_STEP]:=/x3:ekv/x3:autogenehmigung/x3:has_request_step
+
+SETVAR [AG_INPUT_TS]:=/x3:ekv/x3:autogenehmigung/x3:ag_input_ts
+SETVAR [AG_DECISION]:=/x3:ekv/x3:autogenehmigung/x3:decision
+SETVAR [AG_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:message
+SETVAR [AG_EXIT_GROUP]:=/x3:ekv/x3:autogenehmigung/x3:exit_group
+SETVAR [AG_EXIT_CODE]:=/x3:ekv/x3:autogenehmigung/x3:exit_code
+SETVAR [AG_EXECUTION_TIME]:=/x3:ekv/x3:autogenehmigung/x3:execution_time
+
+SETVAR [AG_VE_DECISION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:decision
+SETVAR [AG_VE_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:message
+SETVAR [AG_VE_EXIT_GROUP]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:exit_group
+SETVAR [AG_VE_EXIT_CODE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:exit_code
+   
+SETVAR [AG_VE_BRUTTO]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:ag_brutto
+SETVAR [AG_VE_NETTO]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:ag_netto
+SETVAR [AG_VE_RULE_SET]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:rule_set
+SETVAR [AG_VE_BUCHUNGSKONTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:kt_entscheidung/x3:buchungskonto
+SETVAR [AG_VE_DRUCK]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:druck
+
+SETVAR [AG_POS_BRUTTO]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:ag_brutto
+SETVAR [AG_POS_NETTO]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:ag_netto
+SETVAR [AG_POS_DECISION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:decision
+SETVAR [AG_POS_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:message
+SETVAR [AG_POS_EXIT_GROUP]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:exit_group
+SETVAR [AG_POS_EXIT_CODE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:exit_code
+
+
+SETVAR [MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:message
+SETVAR [RULE_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_id
+SETVAR [RULE_VERSION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_version
+SETVAR [TEMPLATE_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:template_id
+SETVAR [TEMPLATE_VERSION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:template_version
+SETVAR [HM_CHECK_EXIST]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:check_exist
+SETVAR [HM_EXIST]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvExists
+SETVAR [HM_FIND_HM_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:find_hm_type
+
+
+SETVAR [KT_IK]:=/x3:ekv/x3:kt/x3:ik
+SETVAR [KT_NAME]:=/x3:ekv/x3:kt/x3:name
+SETVAR [KT_PERSON_ID]:=/x3:ekv/x3:autogenehmigung/x3:kt_person_id
+SETVAR [KT_PERSON]:=/x3:ekv/x3:autogenehmigung/x3:kt_person
+SETVAR [KT_GST_NAME]:=/x3:ekv/x3:autogenehmigung/x3:kt_gst_name
+SETVAR [KT_GST]:=/x3:ekv/x3:autogenehmigung/x3:kt_gst
+SETVAR [KT_DEP_CODE]:=/x3:ekv/x3:autogenehmigung/x3:kt_dep_code
+SETVAR [KT_FIRST]:=/x3:ekv/x3:autogenehmigung/x3:kt_first
+SETVAR [KT_SECOND]:=/x3:ekv/x3:autogenehmigung/x3:kt_second
+SETVAR [KT_THIRD]:=/x3:ekv/x3:autogenehmigung/x3:kt_third
+
+SETVAR [LE_IK]:=/x3:ekv/x3:le/x3:ik
+SETVAR [LE_NAME]:=/x3:ekv/x3:le/x3:name
+SETVAR [LE_IS_TAX_FREE]:=/x3:ekv/x3:autogenehmigung/x3:le_is_tax_free
+
+
+SETVAR [VERS_ANREDE]:=/x3:ekv/x3:versicherter/x3:anrede
+SETVAR [VERS_VORNAME]:=/x3:ekv/x3:versicherter/x3:vorname
+SETVAR [VERS_TITEL]:=/x3:ekv/x3:versicherter/x3:titel
+SETVAR [VERS_NACHNAME]:=/x3:ekv/x3:versicherter/x3:nachname
+SETVAR [VERS_NACHNAME_VORSATZ]:=/x3:ekv/x3:versicherter/x3:nachname_vorsatz
+SETVAR [VERS_GEBDATUM]:=/x3:ekv/x3:versicherter/x3:geburtsdatum
+SETVAR [VERS_VNR]:=/x3:ekv/x3:versicherter/x3:vnr
+SETVAR [VERS_KVNR]:=/x3:ekv/x3:versicherter/x3:kvnr
+SETVAR [VERS_ANSPRUCH]:=/x3:ekv/x3:versicherter/x3:anspruch
+SETVAR [VERS_STATUS]:=/x3:ekv/x3:versicherter/x3:status
+SETVAR [VERS_LGST]:=/x3:ekv/x3:versicherter/x3:lgst
+SETVAR [VERS_BG_WELT]:=/x3:ekv/x3:versicherter/x3:herkunft_kz
+
+SETVAR [VERS_LKZ]:=/x3:ekv/x3:versicherter/x3:adresse/x3:lkz
+SETVAR [VERS_PLZ]:=/x3:ekv/x3:versicherter/x3:adresse/x3:plz
+SETVAR [VERS_TEL]:=/x3:ekv/x3:versicherter/x3:adresse/x3:telefon
+SETVAR [VERS_ORT]:=/x3:ekv/x3:versicherter/x3:adresse/x3:ort
+SETVAR [VERS_STRASSE]:=/x3:ekv/x3:versicherter/x3:adresse/x3:strasse
+
+SETVAR [VERS_VORMUND]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vVM
+SETVAR [VERS_VIP]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vVIP
+SETVAR [VERS_GESCHUETZT_GEK]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vGP
+SETVAR [VERS_GESCHUETZT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vAcc
+SETVAR [VERS_END_DATE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:entitlement_end
+SETVAR [VERS_START]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:entitlement_start
+SETVAR [VERS_END]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:entitlement_end
+SETVAR [VERS_ZEUGENSCHUTZ]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vZG
+SETVAR [VERS_IN_KRANKENHAUS]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:in_hospital
+SETVAR [VERS_KZ_KV]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:kz_kv
+SETVAR [STATUS_MFR]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:status_mfr
+SETVAR [GRUNDVERSEND]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:grundversend
+SETVAR [VERS_PERSON_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:person_type
+SETVAR [LIEFERADRESSE_PLZ]:=/x3:ekv/x3:lieferadresse/x3:plz
+
+SETVAR [VERS_INFO_EINDEUTIG]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:stammdaten_eindeutig
+SETVAR [VERS_INFO_VNR]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vnr
+SETVAR [VERS_INFO_VORNAME]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vorname
+SETVAR [VERS_INFO_NACHNAME]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:nachname
+SETVAR [VERS_INFO_LKZ]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:lkz
+SETVAR [VERS_INFO_TITEL]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:titel
+SETVAR [VERS_INFO_NACHNAME_VORSATZ]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:nachname_vorsatz
+SETVAR [VERS_INFO_STATUS]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:status
+SETVAR [VERS_INFO_ANREDE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:anrede
+SETVAR [VERS_INFO_STRASSE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:strasse
+SETVAR [VERS_INFO_ORT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:ort
+SETVAR [VERS_INFO_TELNR]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:telnr
+SETVAR [VERS_INFO_CARE_EFFORT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:care_effort_level
+SETVAR [VERS_INFO_CARE_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:care_type
+
+
+SETVAR [KV_DATUM]:=/x3:ekv/x3:kva/x3:datum
+SETVAR [KV_ANZAHL_VE]:=/x3:ekv/x3:kva/x3:anz_versorgeinheiten
+SETVAR [KV_ANHANG_TYP]:=/x3:ekv/x3:anhaenge/x3:anhang/x3:typ
+SETVAR [KV_ANHANG_DATA]:=/x3:ekv/x3:anhaenge/x3:anhang/x3:daten
+SETVAR [KV_ANHANG_ART]:=/x3:ekv/x3:anhaenge/x3:anhang/x3:art
+
+SETVAR [HAUPT_HM_HMV]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:hm/x3:hmv  
+SETVAR [HAUPT_HM_KZH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:kzh
+SETVAR [HAUPT_HM_GLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:hm/x3:glz
+SETVAR [HAUPT_HM_KZH_TYP]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[1]/x3:positionen/x3:position[1]/x3:kzh_typ
+
+SETVAR [HAUPT_HM_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:brutto
+SETVAR [HAUPT_HM_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:netto
+
+SETVAR [HM_NAME]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:name
+SETVAR [HM_HMV]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:hmv
+SETVAR [HM_PZN]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:pzn
+
+SETVAR [HM_GLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:glz
+SETVAR [HM_LE_SET_ID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:zhp_le_set_id
+SETVAR [HM_KZH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:kzh
+SETVAR [HM_KZH_VORGANGSART]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:kzh_vorgangsart
+SETVAR [HM_KZH_TYP]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:kzh_typ
+SETVAR [HM_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:brutto
+SETVAR [HM_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:netto
+SETVAR [HM_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:mwst_prozent
+SETVAR [HM_EIGENANTEIL]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:eigenanteil_betrag
+SETVAR [HM_HAUPTHIMI]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:hmhaupt_kz  
+SETVAR [HM_MENGE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:menge
+SETVAR [HM_BESONDERHEIT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:besonderheiten
+SETVAR [HM_AUFSCHLAG]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:aufschlag
+SETVAR [HM_RABATT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:rabatt
+SETVAR [HM_ISPVTYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvIsPvType
+SETVAR [HM_BESONDERHEIT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:besonderheiten
+SETVAR [HM_AUFSCHLAG]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:aufschlag
+SETVAR [HM_RABATT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:rabatt
+SETVAR [HM_ISPVTYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvIsPvType
+
+
+
+SETVAR [EIGENTUM] := /x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:sonderfelder/x3:eigentumsvorbehalt_kz
+SETVAR [POS_ID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:pos_id
+
+SETVAR [FP_DAUER]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:fp/x3:dauer
+SETVAR [FP_DAUER_EINHEIT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:fp/x3:dauer_einheit
+
+SETVAR [VE_ID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:vers_id
+SETVAR [VE_NAME]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:name
+SETVAR [VE_KOSTENTRAEGER]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:kt
+SETVAR [VE_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:brutto
+SETVAR [VE_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:netto
+SETVAR [VE_ZUZAHLUNG]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:zuzahlung_betrag
+SETVAR [VE_ZUZAHLUNG_GESETZLICH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:zuzahlung_betrag_gesetzlich
+SETVAR [VE_EIGENANTEIL]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:eigenanteil_betrag
+SETVAR [VE_ANZ_POSITIONEN]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:anz_positionen
+SETVAR [LEISTUNGSART] := /x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:kt_entscheidung/x3:leistungsart
+SETVAR [VE_ENTSCHEIDUNG_KT] := /x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:kt_entscheidung/x3:kt
+SETVAR [VE_DATUM_VON]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:versorgzeitraum/x3:von
+SETVAR [VE_DATUM_BIS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:versorgzeitraum/x3:bis
+
+SETVAR [VO_KZ]:=/x3:ekv/x3:verordnung/x3:vo_kz
+SETVAR [VO_DATUM]:=/x3:ekv/x3:verordnung/x3:datum
+SETVAR [VO_DIAGNOSE_ICD]:=/x3:ekv/x3:verordnung/x3:diagnosen/x3:diagnose[1]/x3:icd
+
+
+SETVAR [VERORDNER_NAME]:=/x3:ekv/x3:verordnung/x3:verordner/x3:name
+SETVAR [VERORDNER_VORNAME]:=/x3:ekv/x3:verordnung/x3:verordner/x3:vorname
+SETVAR [VERORDNER_TITEL]:=/x3:ekv/x3:verordnung/x3:verordner/x3:vorname
+SETVAR [VO_BETRIEBSSTAETTENNAME]:=/x3:ekv/x3:verordnung/x3:verordner/x3:betriebsstaettenname
+SETVAR [VO_ARZTNUMMER]:=/x3:ekv/x3:verordnung/x3:verordner/x3:arzt_nr
+SETVAR [VO_BETRIEBSSTAETTENNUMMER]:=/x3:ekv/x3:verordnung/x3:verordner/x3:betriebsstaetten_nr
+
+SETVAR [VERORDNER_ADRESSE_STRASSE]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:strasse			
+SETVAR [VERORDNER_ADRESSE_HAUSNR]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:hausnr
+SETVAR [VERORDNER_ADRESSE_LKZ]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:lkz
+SETVAR [VERORDNER_ADRESSE_PLZ]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:plz
+SETVAR [VERORDNER_ADRESSE_ORT]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:ort
+SETVAR [VERORDNER_ADRESSE_TELEFON]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:telefon
+SETVAR [VERORDNER_ADRESSE_BUNDESLAND]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:bundesland
+
+
+
+SETVAR [VP_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:brutto
+SETVAR [VP_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:netto
+SETVAR [VP_REGION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:vp_region
+SETVAR [VP_PARTNER]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:vp_partner
+
+SETVAR [HAUPT_VP_KZH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:kzh
+
+
+SETVAR [HAUPT_VP_REGION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:vp_region
+SETVAR [HAUPT_VP_PARTNER]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:vp_partner
+
+SETVAR [HAUPT_VP_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:brutto
+SETVAR [HAUPT_VP_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:netto
+
+SETVAR [VP_MWST]:=0
+SETVAR [VP_OVERRIDE]:=0
+SETVAR [VP_OVERRIDE_OVER_PRICE]:=0
+SETVAR [VP_OVERRIDE_OVER_KZH]:= 0
+
+SETVAR [VERTRAG_VERSION]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:version_id
+SETVAR [VERTRAG_ID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:vertrag_id
+SETVAR [VERTRAG_ART]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:vertrag_art
+SETVAR [VERTRAG_GUELTIG_AB]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:gueltig_ab
+SETVAR [VERTRAG_GUELTIG_BIS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:gueltig_bis
+SETVAR [VERTRAG_PRODUKT_NAME]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:produkt_name
+SETVAR [VERTRAG_GLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:glz
+SETVAR [VERTRAG_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:mwst
+SETVAR [VERTRAG_MWST_PROZENT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:mwst_prozent
+SETVAR [VERTRAG_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:brutto
+SETVAR [VERTRAG_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:netto
+SETVAR [VERTRAG_HMID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:hm_id
+SETVAR [VERTRAG_BEREICH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:bereich
+SETVAR [VERTRAG_IKLE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:ik_le
+SETVAR [VERTRAG_KZH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:kzh
+SETVAR [VERTRAG_LEISTUNGSZEITRAUM]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:leistungszeitraum
+SETVAR [VERTRAG_MENGE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:menge
+SETVAR [VERTRAG_MENGEEINHEIT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:mengeneinheit
+SETVAR [VERTRAG_PLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:plz
+SETVAR [VERTRAG_POSNR]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:posnr
+SETVAR [VERTRAG_PREIS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:preis
+SETVAR [VERTRAG_PRODUKTBES]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:produktbes
+SETVAR [VERTRAG_RABATT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:rabatt
+
+SETVAR [SEARCH_WITHOUT_MEMBERSHIP]:= /x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:find_without_le
+SETVAR $VE_BRUTTO_GLZ$:=$VE_BRUTTO_GLZ$
+SETVAR $VE_NETTO_GLZ$:=$VE_NETTO_GLZ$
+
+ASSIGN{[HM_CHECK_EXIST]:=1;[HM_FIND_HM_TYPE]:=1;[SEARCH_WITHOUT_MEMBERSHIP]:=1}
+
+
+SETVAR [RESUPPLY_HM_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:hm_id
+SETVAR [RESUPPLY_STORE_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:zhp_lagernummer
+SETVAR [RESUPPLY_TIME_VALUE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:zeitwert
+SETVAR [RESUPPLY_COST]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:wiedereinsatz_kosten
+SETVAR [RESUPPLY_BUY_COST]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:kauf_preis
+SETVAR [RESUPPLY_STATE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:zustand
+
+
+SETVAR [RESUPPLY_AVAILABLE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_available
+
+SETVAR [HM_LEGS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:legs
+SETVAR [LE_IS_CONTRACT_PARTNER]:=/x3:ekv/x3:autogenehmigung/x3:le_is_contract_partner
+SETVAR [LEGS_HAS_CONTRACTS]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:legs_has_contracts
+
+SETVAR [VE_SPLIT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:do_split
+SETVAR [VE_SPLIT]:=0
+
+SETVAR [VO_UNFALL_KZ]:=/x3:ekv/x3:verordnung/x3:unfall_kz
+SETVAR [VO_BVG_KZ]:=/x3:ekv/x3:verordnung/x3:bvg_kz
+
+SETVAR [MANDATORYFIELDSMISSING]:=/x3:ekv/x3:autogenehmigung/x3:mandatoryFieldsMissing
+
+SETVAR [VERS_INFO_CARE_EFFORT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:care_effort_level
+
+SETVAR [VERTRAG_LEGS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:legs
+SETVAR [HAUPT_VP_IKLE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:ik_le
+SETVAR [HAUPT_VP_PLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:plz
+SETVAR [HAUPT_VP_GLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:glz
+SETVAR [HAUPT_VP_LEGS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:legs
+SETVAR [HAUPT_VP_MENGE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:menge
+SETVAR [HAUPT_VP_PRODUKTBES]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:produktbes
+SETVAR [HAUPT_HM_LEGS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:legs
+SETVAR [HAUPT_HM_MENGE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:hm/x3:menge
+SETVAR [HAUPT_HM_PRODUKTBES]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:hm/x3:besonderheiten
+SETVAR [HM_PRODUKTBES]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:besonderheiten
+
+SETVAR [HAS_VO]:=/x3:ekv/x3:verordnung
+
+SETVAR [VERS_KENNZEICHNUNG_FAMILIENANGEHOERIGER]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:kzfa
+
+
+SETVAR [HAUPT_HM_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:mwst_prozent
+SETVAR [HAUPT_VP_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:mwst_prozent
+
+
+SETVAR [AG_VE_RULE_SET]:=&quot;none&quot;
+SETVAR [AG_VE_DRUCK]:=&quot;default&quot;
+
+
+SETVAR [HM_EXIST_10]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvExists10
+SETVAR [HM_EXIST_7]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvExists7
+
+SETVAR [IS_NACHLAUF]:=/x3:ekv/x3:autogenehmigung/x3:is_nachlauf
+
+SETVAR [IS_NGPV]:=0
+
+
+SETVAR [FP_REF_END]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:versorgzeitraum/x3:fp_ref_end
+
+
+SETVAR [VERS_PLZ_IN_LIEFERGEBIET]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:vp_region_vers
+SETVAR [LIEFER_PLZ_IN_LIEFERGEBIET]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:vp_region_liefer
+SETVAR [HAUPT_KZH_VORGANGSART]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:kzh_vorgangsart
+SETVAR [LIEFERADRESSE_PLZ]:=/x3:ekv/x3:lieferadresse/x3:plz
+SETVAR [VERS_INFO_PLZ]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:plz
+
+
+SETVAR [VERS_GESCHLECHT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:gender
+SETVAR [PERSON_TYPE]:=/x3:ekv/x3:versicherter/x3:person_type
+SETVAR [CASE_REDUNDANT_CHECK_HMV]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:hmv
+SETVAR [CASE_REDUNDANT_CHECK_KZH]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:kzh_vorgangsart
+SETVAR [CASE_REDUNDANT_CHECK_PRICE]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:price
+SETVAR [CASE_REDUNDANT_CHECK_PERIOD]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:supply_period
+SETVAR [CASE_REDUNDANT_CHECK_VODATE]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:vo_date
+SETVAR [CASE_REDUNDANT_CHECK_PRODUKBES]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:produktbesonderheit
+SETVAR [CASE_REDUNDANT_CHECK_DAYS]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:period_in_days
+SETVAR [CASE_IS_REDUNDANT]:=/x3:ekv/x3:autogenehmigung/x3:case_is_redundant
+
+SETVAR [LEGAL_GUARDIAN_INFORMATION_COMPLETE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:legal_guardian_information_complete
+
+SETVAR [LEGAL_GUARDIAN_INFORMATION_COMPLETE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:legal_guardian_information_complete
+
+
+SETVAR [ANHANG_ART]:=/x3:ekv/x3:anhaenge/x3:anhang[1]/x3:art
+WRITE_X3TAGS(&quot;ANHANG_ART&quot;)
+
+SETVAR [BUNDESLAND]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:bundesland
+
+SETVAR [CONTRACT_REF_DATE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:referenz_date
+SETVAR [CONTRACT_REF_DATE]:=0
+SETVAR [VO_HOSPITALDISCHARGE]:=/x3:ekv/x3:verordnung/x3:hospitalDischarge
+SETVAR [SUBPROCESSID]:=/x3:ekv/x3:autogenehmigung/x3:subProcessId
+
+WRITE_X3TAGS(&quot;VO_HOSPITALDISCHARGE&quot;)
+SETVAR [ACCESS_LEVEL]:=/x3:ekv/x3:doc/x3:ktAccLvl
+SETVAR [HAS_AMENDMENT_STEP]:=/x3:ekv/x3:autogenehmigung/x3:has_amendment_step
+
+SETVAR [ACCESS_LEVEL]:=/x3:ekv/x3:autogenehmigung/x3:accLvlAl
+SETVAR [SPECIAL_RIGHT]:=/x3:ekv/x3:autogenehmigung/x3:accLvlSp
+
+
+SETVAR [IS_NGPV]:=/x3:ekv/x3:autogenehmigung/x3:isNgpv
+
+SETVAR [HM_PBS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:besonderheiten
+
+
+SETVAR [PGCOMBINATIONALLOWED] := /x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:pgcombinationallowed
+
+SETVAR [IS_NGPV]:=/x3:ekv/x3:autogenehmigung/x3:isNgpv
+SETVAR [PERSON_TYPE_SOURCE]:=/x3:ekv/x3:versicherter/x3:person_type_source
+SETVAR [KZ_PV]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:kz_pv
+IF [KT_IK] &lt;&gt;&quot;104940005&quot;
+UDF_CLEAN_UP_HMV([HM_HMV])
+ENDIF
+SETVAR [VALIDPRODUCTSPECIALTY]:=/x3:ekv/x3:autogenehmigung/x3:validProductspecialty
+SETVAR [YEAR_TURN_SPLIT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:splitByTurnOfTheYear
+SETVAR [BIRTHDAY_SPLIT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:splitByBirthday
+SETVAR [SPLITWITHQUANTITYDISTRIBUTION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:splitWithQuantityDistribution
+SETVAR [SPLITWITHQUANTITYDISTRIBUTION]:=0
+
+SETVAR [FIRST_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:first_rule_message
+SETVAR [FIRST_RULE_ID]:=/x3:ekv/x3:autogenehmigung/x3:first_rule_id
+SETVAR [FIRST_RULE_NAME]:=/x3:ekv/x3:autogenehmigung/x3:first_rule_name                     
+SETVAR [RULE_NAME]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_name                     
+SETVAR [RULE_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_type                     
+SETVAR [RULE_GROUP_NAME]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_group_name                     
+SETVAR [RULE_GROUP_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_group_type                     
+SETVAR [RULE_PRODUCT_CATEGORY_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_product_category_id                     
+SETVAR [RULE_DEPARTMENT_NAME]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_department_name                     
+SETVAR [DEPARTMENT_NAME]:=/x3:ekv/x3:autogenehmigung/x3:ktGstName                     
+
+SETVAR [AG_VE_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:vers_id 
+SETVAR [AG_VE_NR]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:vers_nr 
+SETVAR [AG_POS_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:pos_id 
+SETVAR [AG_POS_NR]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:pos_nr 
+
+SETVAR [VE_NR]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:vers_nr 
+SETVAR [POS_NR]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:pos_nr 
+
+ASSIGN{[AG_VE_ID]:=[VE_ID];[AG_VE_NR]:=[VE_NR];[AG_POS_ID]:=[POS_ID];[AG_POS_NR]:=[POS_NR]} 
+SETVAR [ADD_REFERENZ_HM]:= /x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:add_referenz_hm
+
+WRITE_X3TAGS(&quot;AG_VE_ID&quot;) 
+WRITE_X3TAGS(&quot;AG_VE_NR&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_ID&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_NR&quot;) 
+
+SETVAR [FIRST_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:first_message
+SETVAR [SPLITWITHQUANTITYDISTRIBUTION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:splitWithQuantityDistribution
+SETVAR [SPLITWITHQUANTITYDISTRIBUTION]:=0
+SETVAR [VALIDPRODUCTSPECIALTY]:=/x3:ekv/x3:autogenehmigung/x3:validProductspecialty
+
+
+
+
+WRITE_X3TAGS(&quot;VERS_VNR&quot;)
+WRITE_X3TAGS(&quot;VERS_VORNAME&quot;)
+WRITE_X3TAGS(&quot;VERS_NACHNAME&quot;)
+WRITE_X3TAGS(&quot;VERS_NACHNAME_VORSATZ&quot;)
+WRITE_X3TAGS(&quot;VERS_TITEL&quot;)
+WRITE_X3TAGS(&quot;VERS_LKZ&quot;)
+WRITE_X3TAGS(&quot;VERS_STATUS&quot;)
+WRITE_X3TAGS(&quot;VERS_ANREDE&quot;)
+WRITE_X3TAGS(&quot;VERS_STRASSE&quot;)
+WRITE_X3TAGS(&quot;VERS_ORT&quot;)
+WRITE_X3TAGS(&quot;VERS_TEL&quot;)
+WRITE_X3TAGS(&quot;VE_SPLIT&quot;)
+
+WRITE_X3TAGS(&quot;HM_BEZEICHNUNG&quot;)
+
+WRITE_X3TAGS(&quot;SEARCH_LOWESTPRICE&quot;)
+WRITE_X3TAGS(&quot;SEARCH_WITHOUT_MEMBERSHIP&quot;)
+
+WRITE_X3TAGS(&quot;HAUPT_VP_BRUTTO&quot;)
+WRITE_X3TAGS(&quot;HAUPT_VP_NETTO&quot;)
+WRITE_X3TAGS(&quot;HAUPT_VP_REGION&quot;)
+WRITE_X3TAGS(&quot;HAUPT_VP_PARTNER&quot;)
+
+
+WRITE_X3TAGS(&quot;VP_BRUTTO&quot;)
+WRITE_X3TAGS(&quot;VP_NETTO&quot;)
+WRITE_X3TAGS(&quot;VP_PARTNER&quot;)
+WRITE_X3TAGS(&quot;VP_REGION&quot;)  
+
+
+WRITE_X3TAGS(&quot;AG_VE_DRUCK&quot;) 
+WRITE_X3TAGS(&quot;AG_VE_RULE_SET&quot;) 
+WRITE_X3TAGS(&quot;AG_VE_BUCHUNGSKONTO&quot;) 
+
+WRITE_X3TAGS(&quot;AG_VE_BRUTTO&quot;)
+WRITE_X3TAGS(&quot;AG_VE_NETTO&quot;)
+WRITE_X3TAGS(&quot;AG_VE_DECISION&quot;) 
+WRITE_X3TAGS(&quot;AG_VE_MESSAGE&quot;)
+WRITE_X3TAGS(&quot;AG_VE_EXIT_GROUP&quot;)
+WRITE_X3TAGS(&quot;AG_VE_EXIT_CODE&quot;) 
+
+WRITE_X3TAGS(&quot;AG_POS_BRUTTO&quot;)
+WRITE_X3TAGS(&quot;AG_POS_NETTO&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_DECISION&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_MESSAGE&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_EXIT_GROUP&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_EXIT_CODE&quot;) 
+WRITE_X3TAGS(&quot;AG_EXECUTION_TIME&quot;) 
+WRITE_X3TAGS(&quot;AG_DECISION&quot;) 
+WRITE_X3TAGS(&quot;AG_MESSAGE&quot;) 
+WRITE_X3TAGS(&quot;AG_EXIT_GROUP&quot;) 
+WRITE_X3TAGS(&quot;AG_EXIT_CODE&quot;) 
+WRITE_X3TAGS(&quot;AG_INPUT_TS&quot;) 
+WRITE_X3TAGS(&quot;HM_LE_SET_ID&quot;) 
+WRITE_X3TAGS(&quot;EIGENTUM&quot;) 
+WRITE_X3TAGS(&quot;LEISTUNGSART&quot;) 
+WRITE_X3TAGS(&quot;VE_ENTSCHEIDUNG_KT&quot;) 
+WRITE_X3TAGS(&quot;HM_GLZ&quot;) 
+WRITE_X3TAGS(&quot;HM_KZH_TYP&quot;) 
+WRITE_X3TAGS(&quot;HM_KZH_VORGANGSART&quot;) 
+WRITE_X3TAGS(&quot;HM_HMV&quot;) 
+WRITE_X3TAGS(&quot;HM_KZH&quot;) 
+WRITE_X3TAGS(&quot;HM_BRUTTO&quot;) 
+WRITE_X3TAGS(&quot;HM_NETTO&quot;) 
+WRITE_X3TAGS(&quot;HM_MWST&quot;) 
+WRITE_X3TAGS(&quot;HM_NAME&quot;)
+WRITE_X3TAGS(&quot;HM_MENGE&quot;)
+
+WRITE_X3TAGS(&quot;HM_CHECK_EXIST&quot;)
+WRITE_X3TAGS(&quot;HM_FIND_HM_TYPE&quot;) 
+	
+		
+
+
+WRITE_X3TAGS(&quot;VE_DATUM_VON&quot;) 
+WRITE_X3TAGS(&quot;VE_DATUM_BIS&quot;) 
+WRITE_X3TAGS(&quot;VE_BRUTTO&quot;) 
+WRITE_X3TAGS(&quot;VE_NETTO&quot;) 
+
+WRITE_X3TAGS(&quot;RULE_ID&quot;) 
+WRITE_X3TAGS(&quot;RULE_VERSION&quot;)
+WRITE_X3TAGS(&quot;MESSAGE&quot;) 
+WRITE_X3TAGS(&quot;TEMPLATE_ID&quot;) 
+WRITE_X3TAGS(&quot;TEMPLATE_VERSION&quot;) 
+
+WRITE_X3TAGS(&quot;FP_DAUER&quot;) 
+WRITE_X3TAGS(&quot;FP_DAUER_EINHEIT&quot;) 
+
+WRITE_X3TAGS(&quot;KT_PERSON_ID&quot;) 
+WRITE_X3TAGS(&quot;KT_PERSON&quot;) 
+WRITE_X3TAGS(&quot;KT_GST_NAME&quot;) 
+WRITE_X3TAGS(&quot;KT_GST&quot;) 
+WRITE_X3TAGS(&quot;KT_DEP_CODE&quot;) 
+
+WRITE_X3TAGS(&quot;KT_FIRST&quot;) 
+WRITE_X3TAGS(&quot;KT_SECOND&quot;) 
+WRITE_X3TAGS(&quot;KT_THIRD&quot;) 
+WRITE_X3TAGS(&quot;SEARCH_LOWESTPRICE&quot;)
+
+WRITE_X3TAGS(&quot;VERS_INFO_CARE_EFFORT&quot;)
+
+WRITE_X3TAGS(&quot;HM_BEZEICHNUNG&quot;)
+WRITE_X3TAGS(&quot;FP_REF_END&quot;)
+WRITE_X3TAGS(&quot;VERS_PLZ_IN_LIEFERGEBIET&quot;)
+WRITE_X3TAGS(&quot;LIEFER_PLZ_IN_LIEFERGEBIET&quot;)
+
+WRITE_X3TAGS(&quot;BUNDESLAND&quot;)
+
+WRITE_X3TAGS(&quot;CONTRACT_REF_DATE&quot;)
+
+[IS_NGPV] = &quot;&quot;; ASSIGN{[IS_NGPV]:=0}
+WRITE_X3TAGS(&quot;IS_NGPV&quot;)
+WRITE_X3TAGS(&quot;IS_NGPV&quot;)
+WRITE_X3TAGS(&quot;SB_ID&quot;)
+
+WRITE_X3TAGS(&quot;VALIDPRODUCTSPECIALTY&quot;)
+WRITE_X3TAGS(&quot;SPLITWITHQUANTITYDISTRIBUTION&quot;)
+
+WRITE_X3TAGS(&quot;FIRST_RULE_ID&quot;)
+WRITE_X3TAGS(&quot;FIRST_RULE_NAME&quot;)
+WRITE_X3TAGS(&quot;FIRST_MESSAGE&quot;)
+WRITE_X3TAGS(&quot;YEAR_TURN_SPLIT&quot;)
+WRITE_X3TAGS(&quot;BIRTHDAY_SPLIT&quot;)
+WRITE_X3TAGS(&quot;LE_IS_CONTRACT_PARTNER&quot;)
+                     
+WRITE_X3TAGS(&quot;RULE_NAME&quot;)                     
+WRITE_X3TAGS(&quot;RULE_TYPE&quot;)                     
+WRITE_X3TAGS(&quot;RULE_GROUP_NAME&quot;)                     
+WRITE_X3TAGS(&quot;RULE_GROUP_TYPE&quot;)                     
+WRITE_X3TAGS(&quot;RULE_PRODUCT_CATEGORY_ID&quot;)                     
+WRITE_X3TAGS(&quot;RULE_DEPARTMENT_NAME&quot;)                     
+WRITE_X3TAGS(&quot;DEPARTMENT_NAME&quot;) 
+WRITE_X3TAGS(&quot;ADD_REFERENZ_HM&quot;)
+WRITE_X3TAGS(&quot;FIRST_MESSAGE&quot;)
+WRITE_X3TAGS(&quot;POS_NR&quot;)
+WRITE_X3TAGS(&quot;VE_NR&quot;)
+
+
+
+SETVAR [KT_ID]:=2
+
+SETVAR [IS_NGPV]:=0 
+
+
+# START Rules of CARE
+
+
+# Start IF for CARE
+IF [IS_NGPV] = 0 AND ([X3_PROCESS] = &quot;versorgung&quot; AND [X3_STEP] = &quot;neu&quot;) AND [HAUPT_HM_KZH] &lt;&gt; &quot;01&quot; AND [HAUPT_HM_KZH] &lt;&gt; &quot;18&quot;  AND [HAUPT_HM_KZH] &lt;&gt; &quot;13&quot; AND [HAUPT_HM_KZH] &lt;&gt; &quot;14&quot; AND [HAUPT_HM_KZH] &lt;&gt; &quot;15&quot;
+
+## Start HEAD GLOBAL Rules of ruleType INIT
+
+### ----------------------- START GLOBAL IniA: Suche Referenzpauschale V2.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Suche Referenzpauschale V2.0&quot;,&quot;V2.0&quot;,&quot;2021-03-08 11:01:28.0&quot;,&quot;&quot;,&quot;259&quot;,&quot;199941&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF [HM_KZH] = &quot;09&quot; AND [POS_NR] = 1  AND ([HM_KZH_TYP] = &quot;1&quot; OR [HM_KZH_TYP] = &quot;8&quot;) AND [EIGENTUM]=&quot;2&quot; AND (UDF_SUCHE_REFERENZPAUSCHALE_WITH_SPECIFICATION([HM_HMV],[HM_BESONDERHEIT])=1 OR ([ADD_REFERENZ_HM]= 1 AND [HM_LE_SET_ID] &lt;&gt; &quot;&quot;))
+
+ASSIGN{[HM_REF_FOUND]:=1}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199941&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Suche Referenzpauschale V2.0 -------------------------
+
+### ----------------------- START GLOBAL Default Genehmigungsverzögerung -----------------------
+
+
+UDF_SET_EXECUTION_TIME(10,40)=0;NOAUTOGEN
+
+
+
+
+### ----------------------- END GLOBAL Default Genehmigungsverzögerung -------------------------
+
+### ----------------------- START GLOBAL Setze Alternative Dauer -----------------------
+
+
+UDF_ALTERNATIVE_DAUER()
+UDF_CLEAN_UP_HMV([HM_HMV])
+[HM_GLZ] = 0; ASSIGN{[HM_GLZ]:=&quot;&quot;}
+UDF_SELECT_BENEFIT()
+
+
+
+### ----------------------- END GLOBAL Setze Alternative Dauer -------------------------
+
+### ----------------------- START GLOBAL IniA: Ermittlung Vertragsdaten V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Ermittlung Vertragsdaten V1.0&quot;,&quot;V1.0&quot;,&quot;2019-04-05 09:43:52.0&quot;,&quot;&quot;,&quot;13&quot;,&quot;199946&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+[VERTRAG_IKLE] = [LE_IK];ASSIGN{[VP_PARTNER]:=1}
+[VERTRAG_PLZ] = 1;ASSIGN{[VP_REGION]:=1}
+UDF_SUCHE_VERTRAG_BARMER([LE_IK],[HM_LEGS])
+[POS_NR] = 1;ASSIGN{[HAUPT_VP_REGION]:=[VP_REGION];[HAUPT_VP_PARTNER]:=[VP_PARTNER]}
+
+
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199946&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Ermittlung Vertragsdaten V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Ersetze Versichertendaten V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Ersetze Versichertendaten V1.0&quot;,&quot;V1.0&quot;,&quot;2014-11-11 16:36:52.0&quot;,&quot;&quot;,&quot;153&quot;,&quot;199948&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF [VERS_INFO_EINDEUTIG] = &quot;1&quot;
+#loginfo[199948][153]:[VERS_VNR],[VERS_VORNAME],[VERS_NACHNAME],[VERS_NACHNAME_VORSATZ],[VERS_TITEL],[VERS_LKZ],[VERS_STATUS],[VERS_ANREDE],[VERS_STRASSE],[VERS_ORT],[VERS_PLZ],[VERS_TEL]
+
+ASSIGN{[VERS_VNR]:=[VERS_INFO_VNR];[VERS_VORNAME]:=[VERS_INFO_VORNAME];[VERS_NACHNAME]:=[VERS_INFO_NACHNAME]}
+ ASSIGN{[VERS_NACHNAME_VORSATZ]:=[VERS_INFO_NACHNAME_VORSATZ];[VERS_TITEL]:=[VERS_INFO_TITEL]}
+ ASSIGN{[VERS_LKZ]:=[VERS_INFO_LKZ];[VERS_STATUS]:=[VERS_INFO_STATUS];[VERS_ANREDE]:=[VERS_INFO_ANREDE]}
+ ASSIGN{[VERS_STRASSE]:=[VERS_INFO_STRASSE];[VERS_ORT]:=[VERS_INFO_ORT];[VERS_PLZ]:=[VERS_INFO_PLZ];[VERS_TEL]:=[VERS_INFO_TELNR]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199948&quot;)
+
+
+### ----------------------- END GLOBAL IniS: Ersetze Versichertendaten V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniA: Vorversorgungsermittlung V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Vorversorgungsermittlung V1.0&quot;,&quot;V1.0&quot;,&quot;2014-10-20 10:32:36.0&quot;,&quot;&quot;,&quot;124&quot;,&quot;199950&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+UDF_COUNT_PREV_CARE([HM_HMV2])
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199950&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Vorversorgungsermittlung V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniA: Versicherten- und Leistungsdatenermittlung V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Versicherten- und Leistungsdatenermittlung V1.0&quot;,&quot;V1.0&quot;,&quot;2014-11-11 18:33:00.0&quot;,&quot;&quot;,&quot;125&quot;,&quot;199951&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199951][125]:[VERS_VORMUND],[VERS_VIP],[VERS_GESCHUETZT_GEK],[VERS_GESCHUETZT],[VERS_END_DATE],[VERS_START],[VERS_END],[VERS_ZEUGENSCHUTZ],[VERS_IN_KRANKENHAUS],[VERS_KZ_KV],[STATUS_MFR],[GRUNDVERSEND],[VERS_PERSON_TYPE],[VERS_INFO_EINDEUTIG],[VERS_INFO_VNR],[VERS_INFO_VORNAME],[VERS_INFO_NACHNAME],[VERS_INFO_LKZ],[VERS_INFO_TITEL],[VERS_INFO_NACHNAME_VORSATZ],[VERS_INFO_STATUS],[VERS_INFO_ANREDE],[VERS_INFO_STRASSE],[VERS_INFO_ORT],[VERS_INFO_TELNR],[VERS_INFO_CARE_EFFORT],[VERS_INFO_CARE_TYPE]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199951&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Versicherten- und Leistungsdatenermittlung V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniA: Ermittlung GLZ aus Versorgungszeitraum V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Ermittlung GLZ aus Versorgungszeitraum V1.0&quot;,&quot;V1.0&quot;,&quot;2014-10-20 10:32:22.0&quot;,&quot;&quot;,&quot;126&quot;,&quot;199952&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199952][126]:[HM_GLZ]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199952&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Ermittlung GLZ aus Versorgungszeitraum V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Setze Hilfsmitteltyp automatisiert V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp automatisiert V1.0&quot;,&quot;V1.0&quot;,&quot;2014-10-20 10:32:36.0&quot;,&quot;&quot;,&quot;152&quot;,&quot;199954&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199954][152]:[HM_KZH_TYP]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199954&quot;)
+
+
+### ----------------------- END GLOBAL IniS: Setze Hilfsmitteltyp automatisiert V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Setze Vorgangsart und KT automatisiert V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart und KT automatisiert V1.0&quot;,&quot;V1.0&quot;,&quot;2014-11-11 18:35:09.0&quot;,&quot;&quot;,&quot;154&quot;,&quot;199955&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199955][154]:[HM_KZH_VORGANGSART]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199955&quot;)
+
+
+### ----------------------- END GLOBAL IniS: Setze Vorgangsart und KT automatisiert V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Setze Kontierung automatisiert V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung automatisiert V1.0&quot;,&quot;V1.0&quot;,&quot;2015-06-02 10:45:03.0&quot;,&quot;&quot;,&quot;151&quot;,&quot;199956&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199956][151]:[AG_VE_BUCHUNGSKONTO]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199956&quot;)
+
+
+### ----------------------- END GLOBAL IniS: Setze Kontierung automatisiert V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS:Setze EV automatisiert V 1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS:Setze EV automatisiert V 1.0&quot;,&quot;V1.0&quot;,&quot;2015-05-22 09:07:46.0&quot;,&quot;&quot;,&quot;214&quot;,&quot;199958&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199958][214]:[EIGENTUM]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199958&quot;)
+
+
+### ----------------------- END GLOBAL IniS:Setze EV automatisiert V 1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Setze Kennzeichen Krankenhausentlassmanagement V1.0 -----------------------
+
+
+IF [SUBPROCESSID] = &quot;EAB&quot; AND [VO_HOSPITALDISCHARGE] = &quot;0&quot; AND UDF_STR_STARTSWITH([VO_ARZTNUMMER],&quot;4444444&quot;) = 1
+
+  ASSIGN{[VO_HOSPITALDISCHARGE]:=1}
+
+ENDIF #CONDITIONSIF
+
+
+
+### ----------------------- END GLOBAL IniS: Setze Kennzeichen Krankenhausentlassmanagement V1.0 -------------------------
+
+## End HEAD GLOBAL Rules of ruleType INIT
+
+## Start  Rules of ruleType INIT
+
+### ----------------------- START Anreich: Pseudo Referenzpauschale erstellen -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;Anreich: Pseudo Referenzpauschale erstellen&quot;,&quot;V1.0&quot;,&quot;2020-11-26 14:16:20.0&quot;,&quot;&quot;,&quot;385&quot;,&quot;202960&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [HM_KZH] = &quot;09&quot; AND [POS_NR] = 1 AND ([HM_KZH_TYP] = &quot;1&quot; OR [HM_KZH_TYP] = &quot;8&quot;) AND [EIGENTUM]=&quot;2&quot;
+
+SETVAR [ADD_REFERENZ_HM]:=1
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202960&quot;)
+
+
+### ----------------------- END Anreich: Pseudo Referenzpauschale erstellen -------------------------
+
+### ----------------------- START Ini: Herkunft des Versicherten (Fusion) -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;Ini: Herkunft des Versicherten (Fusion)&quot;,&quot;V1.0&quot;,&quot;2020-12-10 14:30:38.0&quot;,&quot;&quot;,&quot;314&quot;,&quot;202970&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND ((&quot;1&quot; = 1 AND [VERS_BG_WELT] = &quot;B&quot; ) OR (&quot;1&quot; = 2 AND [VERS_BG_WELT] = &quot;D&quot; ))
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202970&quot;)
+
+
+### ----------------------- END Ini: Herkunft des Versicherten (Fusion) -------------------------
+
+### ----------------------- START IniS: Setze EV manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze EV manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2015-10-06 09:01:05.0&quot;,&quot;&quot;,&quot;163&quot;,&quot;202980&quot;,&quot;&quot;,&quot;&quot;)
+
+
+[HM_HMV] = &quot;11.11.11.1111&quot; AND [HM_KZH_VORGANGSART] = &quot;123&quot; AND [VE_NETTO] &lt; 0.0;ASSIGN{[EIGENTUM]:=0}
+[HM_HMV] = &quot;11.11.11.1111&quot; AND [HM_KZH_VORGANGSART] = &quot;103&quot; AND [VE_NETTO] &gt; 0.0;ASSIGN{[EIGENTUM]:=1}
+[HM_HMV] = &quot;55.55.55.5555&quot; AND [HM_KZH_VORGANGSART] = &quot;106&quot; AND [VE_NETTO] &lt; 0.0;ASSIGN{[EIGENTUM]:=2}
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202980&quot;)
+
+
+### ----------------------- END IniS: Setze EV manuell V1.0 -------------------------
+
+## End  Rules of ruleType INIT
+
+## Start RULE GLOBAL Rules of ruleType INIT
+
+### ----------------------- START GLOBAL IniS:Vervollständigung oder Ersetzung der Verordnerdaten V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS:Vervollständigung oder Ersetzung der Verordnerdaten V1.0&quot;,&quot;V1.0&quot;,&quot;2014-11-18 10:01:58.0&quot;,&quot;&quot;,&quot;136&quot;,&quot;199957&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199957][136]:[VERORDNER_NAME],[VERORDNER_VORNAME],[VERORDNER_TITEL],[VO_BETRIEBSSTAETTENNAME],[VO_ARZTNUMMER],[VO_BETRIEBSSTAETTENNUMMER],[VERORDNER_ADRESSE_STRASSE],[VERORDNER_ADRESSE_HAUSNR],[VERORDNER_ADRESSE_LKZ],[VERORDNER_ADRESSE_PLZ],[VERORDNER_ADRESSE_ORT],[VERORDNER_ADRESSE_TELEFON],[VERORDNER_ADRESSE_BUNDESLAND]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199957&quot;)
+
+
+### ----------------------- END GLOBAL IniS:Vervollständigung oder Ersetzung der Verordnerdaten V1.0 -------------------------
+
+## End RULE GLOBAL Rules of ruleType INIT
+
+## Start Rules of ruleType INIT PG 15
+
+IF [HM_HMV2] = &quot;15&quot; 
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202956&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND 1 = 1 
+
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;107&quot;;[HM_KZH]:=&quot;08&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202956&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202966&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202966&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Trennung VE Jahreswechsel V2.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Trennung VE Jahreswechsel V2.0&quot;,&quot;V2.0&quot;,&quot;2020-10-30 02:06:36.0&quot;,&quot;&quot;,&quot;371&quot;,&quot;202977&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+IF UDF_GET_YEAR([VE_DATUM_VON]) &lt;&gt; UDF_GET_YEAR([VE_DATUM_BIS])
+
+ASSIGN{[YEAR_TURN_SPLIT]:=1}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202977&quot;)
+
+
+### ----------------------- END IniS: Trennung VE Jahreswechsel V2.0 -------------------------
+
+### ----------------------- START IniS: Trennung VE 18. Lebensjahr V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Trennung VE 18. Lebensjahr V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-06 15:03:41.0&quot;,&quot;&quot;,&quot;165&quot;,&quot;202991&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND UDF_CHECK_VALUE_IN_LIST([HAUPT_HM_KZH_TYP],&quot;2,3,4,5&quot;) = 1 AND UDF_CHECK_AGE_FULLFILLED_IN_INTERVAL([VE_DATUM_VON], [VE_DATUM_BIS],[VERS_GEBDATUM],18) = 1
+
+ASSIGN{[VE_SPLIT]:=1}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202991&quot;)
+
+
+### ----------------------- END IniS: Trennung VE 18. Lebensjahr V1.0 -------------------------
+
+### ----------------------- START Genehmigungsverzögerung -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;Genehmigungsverzögerung&quot;,&quot;V1.0&quot;,&quot;2015-03-05 14:59:29.0&quot;,&quot;1,1&quot;,&quot;26&quot;,&quot;202995&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+UDF_SET_EXECUTION_TIME(1,1)
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202995&quot;)
+
+
+### ----------------------- END Genehmigungsverzögerung -------------------------
+
+ENDIF # PG 15
+## End Rules of ruleType INIT PG 15
+
+## Start Rules of ruleType INIT PG 01
+
+IF [HM_HMV2] = &quot;01&quot; 
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202963&quot;,&quot;01&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202963&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202971&quot;,&quot;01&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND 1 = 1 
+
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;108&quot;;[HM_KZH]:=&quot;08&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202971&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Trennung VE Jahreswechsel V2.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;Trennung Jahreswechsel&quot;,&quot;IniS: Trennung VE Jahreswechsel V2.0&quot;,&quot;V2.0&quot;,&quot;2020-10-30 02:06:36.0&quot;,&quot;&quot;,&quot;371&quot;,&quot;202981&quot;,&quot;01&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202981$:=0}
+
+UDF_GET_YEAR([VE_DATUM_VON]) &lt;&gt; UDF_GET_YEAR([VE_DATUM_BIS]);ASSIGN{$RULEHIT_202981$:=1 }
+
+
+# #### group_31109
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202981&quot;)
+
+
+### ----------------------- END IniS: Trennung VE Jahreswechsel V2.0 -------------------------
+
+### ----------------------- START Ini: HMV in Liste V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;Trennung Jahreswechsel&quot;,&quot;Ini: HMV in Liste V1.0&quot;,&quot;V1.0&quot;,&quot;2021-04-20 07:48:03.0&quot;,&quot;&quot;,&quot;139&quot;,&quot;202985&quot;,&quot;01&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202985$:=0}
+1 = 1  AND (   ([HM_HMV] = &quot;01.00.99.0003&quot; AND  [HM_KZH] = &quot;08&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0003&quot; AND  [HM_KZH] = &quot;09&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0004&quot; AND  [HM_KZH] = &quot;08&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0004&quot; AND  [HM_KZH] = &quot;09&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) );ASSIGN{$RULEHIT_202985$:=1 }
+
+
+# #### group_31109
+IF $RULEHIT_202981$=1 AND $RULEHIT_202985$=1
+
+ASSIGN{[YEAR_TURN_SPLIT]:=1}
+ 
+
+ENDIF #GROUPIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202985&quot;)
+
+
+### ----------------------- END Ini: HMV in Liste V1.0 -------------------------
+
+### ----------------------- START IniS: Trennung VE 18. Lebensjahr V2.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;Trennung 18 Lebensjahr&quot;,&quot;IniS: Trennung VE 18. Lebensjahr V2.0&quot;,&quot;V2.0&quot;,&quot;2020-10-30 02:06:36.0&quot;,&quot;&quot;,&quot;372&quot;,&quot;202989&quot;,&quot;01&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202989$:=0}
+
+1 = 1 AND UDF_CHECK_AGE_FULLFILLED_IN_INTERVAL([VE_DATUM_VON],[VE_DATUM_BIS],[VERS_GEBDATUM],18)=1;ASSIGN{$RULEHIT_202989$:=1 }
+
+
+# #### group_31111
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202989&quot;)
+
+
+### ----------------------- END IniS: Trennung VE 18. Lebensjahr V2.0 -------------------------
+
+### ----------------------- START Ini: HMV in Liste V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;Trennung 18 Lebensjahr&quot;,&quot;Ini: HMV in Liste V1.0&quot;,&quot;V1.0&quot;,&quot;2021-04-20 07:48:03.0&quot;,&quot;&quot;,&quot;139&quot;,&quot;202993&quot;,&quot;01&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202993$:=0}
+1 = 1  AND (   ([HM_HMV] = &quot;01.00.99.0003&quot; AND  [HM_KZH] = &quot;08&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0003&quot; AND  [HM_KZH] = &quot;09&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0004&quot; AND  [HM_KZH] = &quot;09&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0004&quot; AND  [HM_KZH] = &quot;08&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) );ASSIGN{$RULEHIT_202993$:=1 }
+
+
+# #### group_31111
+IF $RULEHIT_202989$=1 AND $RULEHIT_202993$=1
+
+ASSIGN{[BIRTHDAY_SPLIT]:=1}
+ 
+
+ENDIF #GROUPIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202993&quot;)
+
+
+### ----------------------- END Ini: HMV in Liste V1.0 -------------------------
+
+ENDIF # PG 01
+## End Rules of ruleType INIT PG 01
+
+## Start Rules of ruleType INIT PG 18
+
+IF [HM_HMV2] = &quot;18&quot; 
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202957&quot;,&quot;18&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND 1 = 1 
+
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;100&quot;;[HM_KZH]:=&quot;00&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202957&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Nicht zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202967&quot;,&quot;18&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[HM_KZH_TYP]:=1}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=1}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202967&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze GLZ manuell -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze GLZ manuell&quot;,&quot;V1.0&quot;,&quot;2018-09-04 15:17:30.0&quot;,&quot;&quot;,&quot;348&quot;,&quot;202978&quot;,&quot;18&quot;,&quot;&quot;)
+
+
+
+IF 1 = 0 OR 1 = &quot;&quot;
+                ASSIGN{[HM_GLZ]:=&quot;&quot;; [FP_DAUER]:=&quot;&quot;}
+                ELSE
+                ASSIGN{[HM_GLZ]:=1; [FP_DAUER]:=1}
+                ENDIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202978&quot;)
+
+
+### ----------------------- END IniS: Setze GLZ manuell -------------------------
+
+ENDIF # PG 18
+## End Rules of ruleType INIT PG 18
+
+## Start Rules of ruleType INIT PG 10
+
+IF [HM_HMV2] = &quot;10&quot; 
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202964&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND 1 = 1 
+
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;110&quot;;[HM_KZH]:=&quot;09&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202964&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Genehmigungsverzögerung V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Genehmigungsverzögerung V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-23 14:34:05.0&quot;,&quot;1,1&quot;,&quot;150&quot;,&quot;202972&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+UDF_SET_EXECUTION_TIME(1,1)
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202972&quot;)
+
+
+### ----------------------- END IniS: Genehmigungsverzögerung V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202975&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202975&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kontierung manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2018-05-25 13:47:40.0&quot;,&quot;&quot;,&quot;161&quot;,&quot;202982&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [STATUS_MFR] = 1 
+
+ASSIGN{[AG_VE_BUCHUNGSKONTO]:=&quot;4400000&quot;} 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202982&quot;)
+
+
+### ----------------------- END IniS: Setze Kontierung manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kontierung manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2018-05-25 13:47:40.0&quot;,&quot;&quot;,&quot;161&quot;,&quot;202986&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [STATUS_MFR] = 3 
+
+ASSIGN{[AG_VE_BUCHUNGSKONTO]:=&quot;4400000&quot;} 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202986&quot;)
+
+
+### ----------------------- END IniS: Setze Kontierung manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kontierung manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2018-05-25 13:47:40.0&quot;,&quot;&quot;,&quot;161&quot;,&quot;202990&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [STATUS_MFR] = 4 
+
+ASSIGN{[AG_VE_BUCHUNGSKONTO]:=&quot;4400000&quot;} 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202990&quot;)
+
+
+### ----------------------- END IniS: Setze Kontierung manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kontierung manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2018-05-25 13:47:40.0&quot;,&quot;&quot;,&quot;161&quot;,&quot;202994&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [STATUS_MFR] = 5 
+
+ASSIGN{[AG_VE_BUCHUNGSKONTO]:=&quot;4400000&quot;} 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202994&quot;)
+
+
+### ----------------------- END IniS: Setze Kontierung manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kostenträger manuell -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kostenträger manuell&quot;,&quot;V1.0&quot;,&quot;2015-05-22 14:15:44.0&quot;,&quot;1&quot;,&quot;216&quot;,&quot;202996&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[VE_KOSTENTRAEGER]:=1;[VE_ENTSCHEIDUNG_KT]:=1}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202996&quot;)
+
+
+### ----------------------- END IniS: Setze Kostenträger manuell -------------------------
+
+ENDIF # PG 10
+## End Rules of ruleType INIT PG 10
+
+## Start Rules of ruleType INIT PG 21
+
+IF [HM_HMV2] = &quot;21&quot; 
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202969&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202969$:=0}
+
+1 = 1;ASSIGN{$RULEHIT_202969$:=1 }
+
+
+# #### group_31108
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202969&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START Ini: HMV in Liste V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;Ini: HMV in Liste V1.0&quot;,&quot;V1.0&quot;,&quot;2021-04-20 07:48:03.0&quot;,&quot;&quot;,&quot;139&quot;,&quot;202979&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202979$:=0}
+1 = 1  AND (   ([HM_HMV] = &quot;21.43.01.1005&quot; AND  [HM_KZH] = &quot;04&quot;  ) );ASSIGN{$RULEHIT_202979$:=1 }
+
+
+# #### group_31108
+IF $RULEHIT_202969$=1 AND $RULEHIT_202979$=1
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+ 
+
+ENDIF #GROUPIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202979&quot;)
+
+
+### ----------------------- END Ini: HMV in Liste V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202984&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202984$:=0}
+
+1 = 1;ASSIGN{$RULEHIT_202984$:=1 }
+
+
+# #### group_31110
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202984&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START Ini: HMV in Liste V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;Ini: HMV in Liste V1.0&quot;,&quot;V1.0&quot;,&quot;2021-04-20 07:48:03.0&quot;,&quot;&quot;,&quot;139&quot;,&quot;202988&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202988$:=0}
+1 = 1  AND (   ([HM_HMV] = &quot;21.43.01.1005&quot;) );ASSIGN{$RULEHIT_202988$:=1 }
+
+
+# #### group_31110
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202988&quot;)
+
+
+### ----------------------- END Ini: HMV in Liste V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202992&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202992$:=0}
+
+1 = 1 AND 1 = 1 ;ASSIGN{$RULEHIT_202992$:=1 }
+
+
+# #### group_31110
+IF $RULEHIT_202984$=1 AND $RULEHIT_202988$=1 AND $RULEHIT_202992$=1
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+ 
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;100&quot;;[HM_KZH]:=&quot;00&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #GROUPIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202992&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+ENDIF # PG 21
+## End Rules of ruleType INIT PG 21
+
+## Start FOOTER GLOBAL Rules of ruleType INIT
+
+### ----------------------- START GLOBAL Ersetze Vertragsdaten -----------------------
+
+
+IF [VP_OVERRIDE] = 1 AND UDF_PRUEFE_BRUTTO_PREIS([VP_BRUTTO],[VP_NETTO],[HM_BRUTTO],[HM_NETTO],1,1) = 1 AND [KT_IK] &lt;&gt; &quot;104940005&quot;
+  UDF_ERSETZE_VERTRAG([VP_BRUTTO],[VP_NETTO],[VP_MWST])
+ENDIF
+
+IF [VP_OVERRIDE] = 1 AND [KT_IK] = &quot;104940005&quot;
+  WRITE_X3TAGS(&quot;HM_NAME&quot;)
+  WRITE_X3TAGS(&quot;VE_NAME&quot;)
+  WRITE_X3TAGS(&quot;HM_GLZ&quot;)
+  WRITE_X3TAGS(&quot;HM_MWST&quot;)
+  ASSIGN {[HM_NAME]:=[VERTRAG_PRODUKT_NAME]; [VE_NAME]:=[VERTRAG_PRODUKT_NAME];[HM_GLZ]:=[VERTRAG_GLZ];[HM_MWST]:=[VERTRAG_MWST]}
+ENDIF
+
+IF [VP_OVERRIDE_OVER_PRICE] = 1 AND UDF_PRUEFE_BRUTTO_PREIS([VP_BRUTTO],[VP_NETTO],[HM_BRUTTO],[HM_NETTO],1,3) = 1
+   UDF_ERSETZE_VERTRAG([VP_BRUTTO],[VP_NETTO],[VP_MWST])
+ENDIF
+
+
+IF [VP_OVERRIDE_OVER_KZH] = 1 AND [VERTRAG_BRUTTO]=[HM_BRUTTO] AND ([VERTRAG_GLZ]=[HM_GLZ] OR [VERTRAG_GLZ] = &quot;&quot; OR [VERTRAG_GLZ] = &quot;0&quot;) AND [VERTRAG_IKLE]=[LE_IK]
+    ASSIGN{[HM_KZH]:=[VERTRAG_KZH]}
+ENDIF
+
+
+
+
+### ----------------------- END GLOBAL Ersetze Vertragsdaten -------------------------
+
+## End FOOTER GLOBAL Rules of ruleType INIT
+
+
+ENDIF # CARE
+
+
+# END Rules of CARE
+</body>
+<activationMode>null</activationMode>
+
+</rulefile>
+<rulefile>
+<companyCode>104940005</companyCode>
+<ruleType>MASTER</ruleType>
+<body>
+
+SETVAR [AUTORETURN_HERKUNFT]:=/x3:ekv/x3:autogenehmigung/x3:autoreturn/x3:herkunft
+SETVAR [AUTORETURN_ERT]:=/x3:ekv/x3:autogenehmigung/x3:autoreturn/x3:ert
+SETVAR [AUTORETURN_AGG]:=/x3:ekv/x3:autogenehmigung/x3:autoreturn/x3:agg
+SETVAR [AUTORETURN_HERKUNFT]:=/x3:ekv/x3:autogenehmigung/x3:autoreturn/x3:herkunft
+SETVAR [AUTORETURN_HAS_RECEIVED_HM]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:has_received_hm
+SETVAR [AUTORETURN_HAS_ORDER]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:has_order
+SETVAR [AUTORETURN_SUPPLY_UNIT_IS_READY]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:supply_unit_is_ready
+SETVAR [AUTO_RETURN_CHECK_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:auto_return_check_message
+
+
+SETVAR [AUTORETURN_ORIGIN_ORDER_STATUS]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:origin_order_status
+
+SETVAR [AUTORETURN_HMV_RELEVANT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmv_relevant
+SETVAR [AUTORETURN_HMV_AUTO_APPROVAL]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmv_auto_approval
+
+SETVAR [LE_INTERN]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:intern_lieferant/x3:ik
+
+
+
+
+
+SETVAR [HAUPT_HM_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:mwst_prozent
+SETVAR [HAUPT_VP_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:mwst_prozent
+
+SETVAR [FIRST_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:first_message
+SETVAR [VE_NR]:=1
+SETVAR [POS_NR]:=1
+
+
+
+
+
+
+SETVAR [HAUPT_HM_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:mwst_prozent
+SETVAR [HAUPT_VP_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:mwst_prozent
+
+SETVAR [IS_NGPV]:=/x3:ekv/x3:autogenehmigung/x3:isNgpv
+SETVAR [FIRST_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:first_message
+SETVAR [VE_NR]:=1
+SETVAR [POS_NR]:=1
+
+
+
+
+
+#-----------------------------------------------------
+# HMM Deutschland GmbH
+# Global X3_VARS
+#-----------------------------------------------------
+SETVAR [EXIT_GROUP]:=&quot;&quot;
+SETVAR [EXIT_CODE]:=&quot;&quot;
+SETVAR [HM_REF_FOUND]:=0
+SETVAR [SEARCH_LOWESTPRICE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:find_lowest 
+ASSIGN{[SEARCH_LOWESTPRICE]:=1}
+
+SETVAR [OVERRIDE_BOOKING_ACCOUNT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:override_booking_account
+ASSIGN{[OVERRIDE_BOOKING_ACCOUNT]:=1}
+WRITE_X3TAGS(&quot;OVERRIDE_BOOKING_ACCOUNT&quot;)
+
+SETVAR [POP_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:ag_infos/x3:popup_message
+SETVAR [OLD_RESULT]:=/x3:ekv/x3:autogenehmigung/x3:old_result
+SETVAR [SET_AG]:=/x3:ekv/x3:doc/x3:ag
+
+SETVAR [XVD_HMV]:=/x3:ekv/x3:autogenehmigung/x3:hmv
+SETVAR [EKV_HM_HMV]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[1]/x3:positionen/x3:position[1]/x3:hm/x3:hmv  
+SETVAR [X3_DE_PAY]:=/x3:ekv/x3:doc/x3:dePay
+SETVAR [X3_STEP]:=/x3:ekv/x3:zhp_process/x3:step 
+SETVAR [X3_TIMESTAMP]:=/x3:ekv/x3:doc/x3:send_timestamp
+SETVAR [X3_SOFTWARE]:=/x3:ekv/x3:doc/x3:partner_software
+SETVAR [X3_PROCESS]:=/x3:ekv/x3:zhp_process/x3:process
+SETVAR [X3_ORIGIN]:=/x3:ekv/x3:doc/x3:zhp_origin
+
+SETVAR [ZHP_ORDER_ID]:=/x3:ekv/x3:doc/x3:zhp_order_id
+SETVAR [ZHP_ORDER_ID2]:=/x3:ekv/x3:zhp_process/x3:zhp_order_id
+
+SETVAR [ZHP_MESSAGE]:=/x3:ekv/x3:zhp_process/x3:message
+
+SETVAR [HAS_REQUEST_STEP]:=/x3:ekv/x3:autogenehmigung/x3:has_request_step
+
+SETVAR [AG_INPUT_TS]:=/x3:ekv/x3:autogenehmigung/x3:ag_input_ts
+SETVAR [AG_DECISION]:=/x3:ekv/x3:autogenehmigung/x3:decision
+SETVAR [AG_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:message
+SETVAR [AG_EXIT_GROUP]:=/x3:ekv/x3:autogenehmigung/x3:exit_group
+SETVAR [AG_EXIT_CODE]:=/x3:ekv/x3:autogenehmigung/x3:exit_code
+SETVAR [AG_EXECUTION_TIME]:=/x3:ekv/x3:autogenehmigung/x3:execution_time
+
+SETVAR [AG_VE_DECISION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:decision
+SETVAR [AG_VE_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:message
+SETVAR [AG_VE_EXIT_GROUP]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:exit_group
+SETVAR [AG_VE_EXIT_CODE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:exit_code
+   
+SETVAR [AG_VE_BRUTTO]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:ag_brutto
+SETVAR [AG_VE_NETTO]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:ag_netto
+SETVAR [AG_VE_RULE_SET]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:rule_set
+SETVAR [AG_VE_BUCHUNGSKONTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:kt_entscheidung/x3:buchungskonto
+SETVAR [AG_VE_DRUCK]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:druck
+
+SETVAR [AG_POS_BRUTTO]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:ag_brutto
+SETVAR [AG_POS_NETTO]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:ag_netto
+SETVAR [AG_POS_DECISION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:decision
+SETVAR [AG_POS_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:message
+SETVAR [AG_POS_EXIT_GROUP]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:exit_group
+SETVAR [AG_POS_EXIT_CODE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:exit_code
+
+
+SETVAR [MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:message
+SETVAR [RULE_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_id
+SETVAR [RULE_VERSION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_version
+SETVAR [TEMPLATE_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:template_id
+SETVAR [TEMPLATE_VERSION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:template_version
+SETVAR [HM_CHECK_EXIST]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:check_exist
+SETVAR [HM_EXIST]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvExists
+SETVAR [HM_FIND_HM_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:find_hm_type
+
+
+SETVAR [KT_IK]:=/x3:ekv/x3:kt/x3:ik
+SETVAR [KT_NAME]:=/x3:ekv/x3:kt/x3:name
+SETVAR [KT_PERSON_ID]:=/x3:ekv/x3:autogenehmigung/x3:kt_person_id
+SETVAR [KT_PERSON]:=/x3:ekv/x3:autogenehmigung/x3:kt_person
+SETVAR [KT_GST_NAME]:=/x3:ekv/x3:autogenehmigung/x3:kt_gst_name
+SETVAR [KT_GST]:=/x3:ekv/x3:autogenehmigung/x3:kt_gst
+SETVAR [KT_DEP_CODE]:=/x3:ekv/x3:autogenehmigung/x3:kt_dep_code
+SETVAR [KT_FIRST]:=/x3:ekv/x3:autogenehmigung/x3:kt_first
+SETVAR [KT_SECOND]:=/x3:ekv/x3:autogenehmigung/x3:kt_second
+SETVAR [KT_THIRD]:=/x3:ekv/x3:autogenehmigung/x3:kt_third
+
+SETVAR [LE_IK]:=/x3:ekv/x3:le/x3:ik
+SETVAR [LE_NAME]:=/x3:ekv/x3:le/x3:name
+SETVAR [LE_IS_TAX_FREE]:=/x3:ekv/x3:autogenehmigung/x3:le_is_tax_free
+
+
+SETVAR [VERS_ANREDE]:=/x3:ekv/x3:versicherter/x3:anrede
+SETVAR [VERS_VORNAME]:=/x3:ekv/x3:versicherter/x3:vorname
+SETVAR [VERS_TITEL]:=/x3:ekv/x3:versicherter/x3:titel
+SETVAR [VERS_NACHNAME]:=/x3:ekv/x3:versicherter/x3:nachname
+SETVAR [VERS_NACHNAME_VORSATZ]:=/x3:ekv/x3:versicherter/x3:nachname_vorsatz
+SETVAR [VERS_GEBDATUM]:=/x3:ekv/x3:versicherter/x3:geburtsdatum
+SETVAR [VERS_VNR]:=/x3:ekv/x3:versicherter/x3:vnr
+SETVAR [VERS_KVNR]:=/x3:ekv/x3:versicherter/x3:kvnr
+SETVAR [VERS_ANSPRUCH]:=/x3:ekv/x3:versicherter/x3:anspruch
+SETVAR [VERS_STATUS]:=/x3:ekv/x3:versicherter/x3:status
+SETVAR [VERS_LGST]:=/x3:ekv/x3:versicherter/x3:lgst
+SETVAR [VERS_BG_WELT]:=/x3:ekv/x3:versicherter/x3:herkunft_kz
+
+SETVAR [VERS_LKZ]:=/x3:ekv/x3:versicherter/x3:adresse/x3:lkz
+SETVAR [VERS_PLZ]:=/x3:ekv/x3:versicherter/x3:adresse/x3:plz
+SETVAR [VERS_TEL]:=/x3:ekv/x3:versicherter/x3:adresse/x3:telefon
+SETVAR [VERS_ORT]:=/x3:ekv/x3:versicherter/x3:adresse/x3:ort
+SETVAR [VERS_STRASSE]:=/x3:ekv/x3:versicherter/x3:adresse/x3:strasse
+
+SETVAR [VERS_VORMUND]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vVM
+SETVAR [VERS_VIP]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vVIP
+SETVAR [VERS_GESCHUETZT_GEK]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vGP
+SETVAR [VERS_GESCHUETZT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vAcc
+SETVAR [VERS_END_DATE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:entitlement_end
+SETVAR [VERS_START]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:entitlement_start
+SETVAR [VERS_END]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:entitlement_end
+SETVAR [VERS_ZEUGENSCHUTZ]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vZG
+SETVAR [VERS_IN_KRANKENHAUS]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:in_hospital
+SETVAR [VERS_KZ_KV]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:kz_kv
+SETVAR [STATUS_MFR]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:status_mfr
+SETVAR [GRUNDVERSEND]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:grundversend
+SETVAR [VERS_PERSON_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:person_type
+SETVAR [LIEFERADRESSE_PLZ]:=/x3:ekv/x3:lieferadresse/x3:plz
+
+SETVAR [VERS_INFO_EINDEUTIG]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:stammdaten_eindeutig
+SETVAR [VERS_INFO_VNR]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vnr
+SETVAR [VERS_INFO_VORNAME]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:vorname
+SETVAR [VERS_INFO_NACHNAME]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:nachname
+SETVAR [VERS_INFO_LKZ]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:lkz
+SETVAR [VERS_INFO_TITEL]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:titel
+SETVAR [VERS_INFO_NACHNAME_VORSATZ]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:nachname_vorsatz
+SETVAR [VERS_INFO_STATUS]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:status
+SETVAR [VERS_INFO_ANREDE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:anrede
+SETVAR [VERS_INFO_STRASSE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:strasse
+SETVAR [VERS_INFO_ORT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:ort
+SETVAR [VERS_INFO_TELNR]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:telnr
+SETVAR [VERS_INFO_CARE_EFFORT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:care_effort_level
+SETVAR [VERS_INFO_CARE_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:care_type
+
+
+SETVAR [KV_DATUM]:=/x3:ekv/x3:kva/x3:datum
+SETVAR [KV_ANZAHL_VE]:=/x3:ekv/x3:kva/x3:anz_versorgeinheiten
+SETVAR [KV_ANHANG_TYP]:=/x3:ekv/x3:anhaenge/x3:anhang/x3:typ
+SETVAR [KV_ANHANG_DATA]:=/x3:ekv/x3:anhaenge/x3:anhang/x3:daten
+SETVAR [KV_ANHANG_ART]:=/x3:ekv/x3:anhaenge/x3:anhang/x3:art
+
+SETVAR [HAUPT_HM_HMV]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:hm/x3:hmv  
+SETVAR [HAUPT_HM_KZH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:kzh
+SETVAR [HAUPT_HM_GLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:hm/x3:glz
+SETVAR [HAUPT_HM_KZH_TYP]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[1]/x3:positionen/x3:position[1]/x3:kzh_typ
+
+SETVAR [HAUPT_HM_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:brutto
+SETVAR [HAUPT_HM_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:netto
+
+SETVAR [HM_NAME]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:name
+SETVAR [HM_HMV]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:hmv
+SETVAR [HM_PZN]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:pzn
+
+SETVAR [HM_GLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:glz
+SETVAR [HM_LE_SET_ID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:zhp_le_set_id
+SETVAR [HM_KZH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:kzh
+SETVAR [HM_KZH_VORGANGSART]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:kzh_vorgangsart
+SETVAR [HM_KZH_TYP]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:kzh_typ
+SETVAR [HM_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:brutto
+SETVAR [HM_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:netto
+SETVAR [HM_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:mwst_prozent
+SETVAR [HM_EIGENANTEIL]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:eigenanteil_betrag
+SETVAR [HM_HAUPTHIMI]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:hmhaupt_kz  
+SETVAR [HM_MENGE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:menge
+SETVAR [HM_BESONDERHEIT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:besonderheiten
+SETVAR [HM_AUFSCHLAG]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:aufschlag
+SETVAR [HM_RABATT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:rabatt
+SETVAR [HM_ISPVTYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvIsPvType
+SETVAR [HM_BESONDERHEIT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:besonderheiten
+SETVAR [HM_AUFSCHLAG]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:aufschlag
+SETVAR [HM_RABATT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:rabatt
+SETVAR [HM_ISPVTYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvIsPvType
+
+
+
+SETVAR [EIGENTUM] := /x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:sonderfelder/x3:eigentumsvorbehalt_kz
+SETVAR [POS_ID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:pos_id
+
+SETVAR [FP_DAUER]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:fp/x3:dauer
+SETVAR [FP_DAUER_EINHEIT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:fp/x3:dauer_einheit
+
+SETVAR [VE_ID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:vers_id
+SETVAR [VE_NAME]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:name
+SETVAR [VE_KOSTENTRAEGER]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:kt
+SETVAR [VE_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:brutto
+SETVAR [VE_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:netto
+SETVAR [VE_ZUZAHLUNG]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:zuzahlung_betrag
+SETVAR [VE_ZUZAHLUNG_GESETZLICH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:zuzahlung_betrag_gesetzlich
+SETVAR [VE_EIGENANTEIL]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:preis_versorgeinheit/x3:eigenanteil_betrag
+SETVAR [VE_ANZ_POSITIONEN]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:anz_positionen
+SETVAR [LEISTUNGSART] := /x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:kt_entscheidung/x3:leistungsart
+SETVAR [VE_ENTSCHEIDUNG_KT] := /x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:kt_entscheidung/x3:kt
+SETVAR [VE_DATUM_VON]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:versorgzeitraum/x3:von
+SETVAR [VE_DATUM_BIS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:versorgzeitraum/x3:bis
+
+SETVAR [VO_KZ]:=/x3:ekv/x3:verordnung/x3:vo_kz
+SETVAR [VO_DATUM]:=/x3:ekv/x3:verordnung/x3:datum
+SETVAR [VO_DIAGNOSE_ICD]:=/x3:ekv/x3:verordnung/x3:diagnosen/x3:diagnose[1]/x3:icd
+
+
+SETVAR [VERORDNER_NAME]:=/x3:ekv/x3:verordnung/x3:verordner/x3:name
+SETVAR [VERORDNER_VORNAME]:=/x3:ekv/x3:verordnung/x3:verordner/x3:vorname
+SETVAR [VERORDNER_TITEL]:=/x3:ekv/x3:verordnung/x3:verordner/x3:vorname
+SETVAR [VO_BETRIEBSSTAETTENNAME]:=/x3:ekv/x3:verordnung/x3:verordner/x3:betriebsstaettenname
+SETVAR [VO_ARZTNUMMER]:=/x3:ekv/x3:verordnung/x3:verordner/x3:arzt_nr
+SETVAR [VO_BETRIEBSSTAETTENNUMMER]:=/x3:ekv/x3:verordnung/x3:verordner/x3:betriebsstaetten_nr
+
+SETVAR [VERORDNER_ADRESSE_STRASSE]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:strasse			
+SETVAR [VERORDNER_ADRESSE_HAUSNR]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:hausnr
+SETVAR [VERORDNER_ADRESSE_LKZ]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:lkz
+SETVAR [VERORDNER_ADRESSE_PLZ]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:plz
+SETVAR [VERORDNER_ADRESSE_ORT]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:ort
+SETVAR [VERORDNER_ADRESSE_TELEFON]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:telefon
+SETVAR [VERORDNER_ADRESSE_BUNDESLAND]:=/x3:ekv/x3:verordnung/x3:verordner/x3:adresse/x3:bundesland
+
+
+
+SETVAR [VP_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:brutto
+SETVAR [VP_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:netto
+SETVAR [VP_REGION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:vp_region
+SETVAR [VP_PARTNER]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:vp_partner
+
+SETVAR [HAUPT_VP_KZH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:kzh
+
+
+SETVAR [HAUPT_VP_REGION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:vp_region
+SETVAR [HAUPT_VP_PARTNER]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:vp_partner
+
+SETVAR [HAUPT_VP_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:brutto
+SETVAR [HAUPT_VP_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:netto
+
+SETVAR [VP_MWST]:=0
+SETVAR [VP_OVERRIDE]:=0
+SETVAR [VP_OVERRIDE_OVER_PRICE]:=0
+SETVAR [VP_OVERRIDE_OVER_KZH]:= 0
+
+SETVAR [VERTRAG_VERSION]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:version_id
+SETVAR [VERTRAG_ID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:vertrag_id
+SETVAR [VERTRAG_ART]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:vertrag_art
+SETVAR [VERTRAG_GUELTIG_AB]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:gueltig_ab
+SETVAR [VERTRAG_GUELTIG_BIS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:gueltig_bis
+SETVAR [VERTRAG_PRODUKT_NAME]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:produkt_name
+SETVAR [VERTRAG_GLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:glz
+SETVAR [VERTRAG_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:mwst
+SETVAR [VERTRAG_MWST_PROZENT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:mwst_prozent
+SETVAR [VERTRAG_BRUTTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:brutto
+SETVAR [VERTRAG_NETTO]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:netto
+SETVAR [VERTRAG_HMID]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:hm_id
+SETVAR [VERTRAG_BEREICH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:bereich
+SETVAR [VERTRAG_IKLE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:ik_le
+SETVAR [VERTRAG_KZH]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:kzh
+SETVAR [VERTRAG_LEISTUNGSZEITRAUM]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:leistungszeitraum
+SETVAR [VERTRAG_MENGE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:menge
+SETVAR [VERTRAG_MENGEEINHEIT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:mengeneinheit
+SETVAR [VERTRAG_PLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:plz
+SETVAR [VERTRAG_POSNR]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:posnr
+SETVAR [VERTRAG_PREIS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:preis
+SETVAR [VERTRAG_PRODUKTBES]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:produktbes
+SETVAR [VERTRAG_RABATT]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:rabatt
+
+SETVAR [SEARCH_WITHOUT_MEMBERSHIP]:= /x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:find_without_le
+SETVAR $VE_BRUTTO_GLZ$:=$VE_BRUTTO_GLZ$
+SETVAR $VE_NETTO_GLZ$:=$VE_NETTO_GLZ$
+
+ASSIGN{[HM_CHECK_EXIST]:=1;[HM_FIND_HM_TYPE]:=1;[SEARCH_WITHOUT_MEMBERSHIP]:=1}
+
+
+SETVAR [RESUPPLY_HM_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:hm_id
+SETVAR [RESUPPLY_STORE_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:zhp_lagernummer
+SETVAR [RESUPPLY_TIME_VALUE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:zeitwert
+SETVAR [RESUPPLY_COST]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:wiedereinsatz_kosten
+SETVAR [RESUPPLY_BUY_COST]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:kauf_preis
+SETVAR [RESUPPLY_STATE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_info/x3:zustand
+
+
+SETVAR [RESUPPLY_AVAILABLE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:resupply_available
+
+SETVAR [HM_LEGS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_position/x3:legs
+SETVAR [LE_IS_CONTRACT_PARTNER]:=/x3:ekv/x3:autogenehmigung/x3:le_is_contract_partner
+SETVAR [LEGS_HAS_CONTRACTS]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:legs_has_contracts
+
+SETVAR [VE_SPLIT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:do_split
+SETVAR [VE_SPLIT]:=0
+
+SETVAR [VO_UNFALL_KZ]:=/x3:ekv/x3:verordnung/x3:unfall_kz
+SETVAR [VO_BVG_KZ]:=/x3:ekv/x3:verordnung/x3:bvg_kz
+
+SETVAR [MANDATORYFIELDSMISSING]:=/x3:ekv/x3:autogenehmigung/x3:mandatoryFieldsMissing
+
+SETVAR [VERS_INFO_CARE_EFFORT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:care_effort_level
+
+SETVAR [VERTRAG_LEGS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:preis_vertrag/x3:legs
+SETVAR [HAUPT_VP_IKLE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:ik_le
+SETVAR [HAUPT_VP_PLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:plz
+SETVAR [HAUPT_VP_GLZ]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:glz
+SETVAR [HAUPT_VP_LEGS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:legs
+SETVAR [HAUPT_VP_MENGE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:menge
+SETVAR [HAUPT_VP_PRODUKTBES]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:produktbes
+SETVAR [HAUPT_HM_LEGS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:legs
+SETVAR [HAUPT_HM_MENGE]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:hm/x3:menge
+SETVAR [HAUPT_HM_PRODUKTBES]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:hm/x3:besonderheiten
+SETVAR [HM_PRODUKTBES]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:besonderheiten
+
+SETVAR [HAS_VO]:=/x3:ekv/x3:verordnung
+
+SETVAR [VERS_KENNZEICHNUNG_FAMILIENANGEHOERIGER]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:kzfa
+
+
+SETVAR [HAUPT_HM_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_position/x3:mwst_prozent
+SETVAR [HAUPT_VP_MWST]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:preis_vertrag/x3:mwst_prozent
+
+
+SETVAR [AG_VE_RULE_SET]:=&quot;none&quot;
+SETVAR [AG_VE_DRUCK]:=&quot;default&quot;
+
+
+SETVAR [HM_EXIST_10]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvExists10
+SETVAR [HM_EXIST_7]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hmvExists7
+
+SETVAR [IS_NACHLAUF]:=/x3:ekv/x3:autogenehmigung/x3:is_nachlauf
+
+SETVAR [IS_NGPV]:=0
+
+
+SETVAR [FP_REF_END]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:versorgzeitraum/x3:fp_ref_end
+
+
+SETVAR [VERS_PLZ_IN_LIEFERGEBIET]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:vp_region_vers
+SETVAR [LIEFER_PLZ_IN_LIEFERGEBIET]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:vp_region_liefer
+SETVAR [HAUPT_KZH_VORGANGSART]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[1]/x3:kzh_vorgangsart
+SETVAR [LIEFERADRESSE_PLZ]:=/x3:ekv/x3:lieferadresse/x3:plz
+SETVAR [VERS_INFO_PLZ]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:plz
+
+
+SETVAR [VERS_GESCHLECHT]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:gender
+SETVAR [PERSON_TYPE]:=/x3:ekv/x3:versicherter/x3:person_type
+SETVAR [CASE_REDUNDANT_CHECK_HMV]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:hmv
+SETVAR [CASE_REDUNDANT_CHECK_KZH]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:kzh_vorgangsart
+SETVAR [CASE_REDUNDANT_CHECK_PRICE]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:price
+SETVAR [CASE_REDUNDANT_CHECK_PERIOD]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:supply_period
+SETVAR [CASE_REDUNDANT_CHECK_VODATE]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:vo_date
+SETVAR [CASE_REDUNDANT_CHECK_PRODUKBES]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:produktbesonderheit
+SETVAR [CASE_REDUNDANT_CHECK_DAYS]:=/x3:ekv/x3:autogenehmigung/x3:update_infos/x3:redundant_check/x3:period_in_days
+SETVAR [CASE_IS_REDUNDANT]:=/x3:ekv/x3:autogenehmigung/x3:case_is_redundant
+
+SETVAR [LEGAL_GUARDIAN_INFORMATION_COMPLETE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:legal_guardian_information_complete
+
+SETVAR [LEGAL_GUARDIAN_INFORMATION_COMPLETE]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:legal_guardian_information_complete
+
+
+SETVAR [ANHANG_ART]:=/x3:ekv/x3:anhaenge/x3:anhang[1]/x3:art
+WRITE_X3TAGS(&quot;ANHANG_ART&quot;)
+
+SETVAR [BUNDESLAND]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:bundesland
+
+SETVAR [CONTRACT_REF_DATE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:referenz_date
+SETVAR [CONTRACT_REF_DATE]:=0
+SETVAR [VO_HOSPITALDISCHARGE]:=/x3:ekv/x3:verordnung/x3:hospitalDischarge
+SETVAR [SUBPROCESSID]:=/x3:ekv/x3:autogenehmigung/x3:subProcessId
+
+WRITE_X3TAGS(&quot;VO_HOSPITALDISCHARGE&quot;)
+SETVAR [ACCESS_LEVEL]:=/x3:ekv/x3:doc/x3:ktAccLvl
+SETVAR [HAS_AMENDMENT_STEP]:=/x3:ekv/x3:autogenehmigung/x3:has_amendment_step
+
+SETVAR [ACCESS_LEVEL]:=/x3:ekv/x3:autogenehmigung/x3:accLvlAl
+SETVAR [SPECIAL_RIGHT]:=/x3:ekv/x3:autogenehmigung/x3:accLvlSp
+
+
+SETVAR [IS_NGPV]:=/x3:ekv/x3:autogenehmigung/x3:isNgpv
+
+SETVAR [HM_PBS]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:hm/x3:besonderheiten
+
+
+SETVAR [PGCOMBINATIONALLOWED] := /x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:pgcombinationallowed
+
+SETVAR [IS_NGPV]:=/x3:ekv/x3:autogenehmigung/x3:isNgpv
+SETVAR [PERSON_TYPE_SOURCE]:=/x3:ekv/x3:versicherter/x3:person_type_source
+SETVAR [KZ_PV]:=/x3:ekv/x3:autogenehmigung/x3:vers_infos/x3:kz_pv
+IF [KT_IK] &lt;&gt;&quot;104940005&quot;
+UDF_CLEAN_UP_HMV([HM_HMV])
+ENDIF
+SETVAR [VALIDPRODUCTSPECIALTY]:=/x3:ekv/x3:autogenehmigung/x3:validProductspecialty
+SETVAR [YEAR_TURN_SPLIT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:splitByTurnOfTheYear
+SETVAR [BIRTHDAY_SPLIT]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:splitByBirthday
+SETVAR [SPLITWITHQUANTITYDISTRIBUTION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:splitWithQuantityDistribution
+SETVAR [SPLITWITHQUANTITYDISTRIBUTION]:=0
+
+SETVAR [FIRST_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:first_rule_message
+SETVAR [FIRST_RULE_ID]:=/x3:ekv/x3:autogenehmigung/x3:first_rule_id
+SETVAR [FIRST_RULE_NAME]:=/x3:ekv/x3:autogenehmigung/x3:first_rule_name                     
+SETVAR [RULE_NAME]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_name                     
+SETVAR [RULE_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_type                     
+SETVAR [RULE_GROUP_NAME]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_group_name                     
+SETVAR [RULE_GROUP_TYPE]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_group_type                     
+SETVAR [RULE_PRODUCT_CATEGORY_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_product_category_id                     
+SETVAR [RULE_DEPARTMENT_NAME]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:rule_department_name                     
+SETVAR [DEPARTMENT_NAME]:=/x3:ekv/x3:autogenehmigung/x3:ktGstName                     
+
+SETVAR [AG_VE_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:vers_id 
+SETVAR [AG_VE_NR]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:vers_nr 
+SETVAR [AG_POS_ID]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:pos_id 
+SETVAR [AG_POS_NR]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:pos_nr 
+
+SETVAR [VE_NR]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:vers_nr 
+SETVAR [POS_NR]:=/x3:ekv/x3:kva/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:positionen/x3:position[{pos_nr}]/x3:pos_nr 
+
+ASSIGN{[AG_VE_ID]:=[VE_ID];[AG_VE_NR]:=[VE_NR];[AG_POS_ID]:=[POS_ID];[AG_POS_NR]:=[POS_NR]} 
+SETVAR [ADD_REFERENZ_HM]:= /x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:update_info/x3:add_referenz_hm
+
+WRITE_X3TAGS(&quot;AG_VE_ID&quot;) 
+WRITE_X3TAGS(&quot;AG_VE_NR&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_ID&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_NR&quot;) 
+
+SETVAR [FIRST_MESSAGE]:=/x3:ekv/x3:autogenehmigung/x3:first_message
+SETVAR [SPLITWITHQUANTITYDISTRIBUTION]:=/x3:ekv/x3:autogenehmigung/x3:versorgeinheiten/x3:versorgeinheit[{ve_nr}]/x3:splitWithQuantityDistribution
+SETVAR [SPLITWITHQUANTITYDISTRIBUTION]:=0
+SETVAR [VALIDPRODUCTSPECIALTY]:=/x3:ekv/x3:autogenehmigung/x3:validProductspecialty
+
+
+
+
+WRITE_X3TAGS(&quot;VERS_VNR&quot;)
+WRITE_X3TAGS(&quot;VERS_VORNAME&quot;)
+WRITE_X3TAGS(&quot;VERS_NACHNAME&quot;)
+WRITE_X3TAGS(&quot;VERS_NACHNAME_VORSATZ&quot;)
+WRITE_X3TAGS(&quot;VERS_TITEL&quot;)
+WRITE_X3TAGS(&quot;VERS_LKZ&quot;)
+WRITE_X3TAGS(&quot;VERS_STATUS&quot;)
+WRITE_X3TAGS(&quot;VERS_ANREDE&quot;)
+WRITE_X3TAGS(&quot;VERS_STRASSE&quot;)
+WRITE_X3TAGS(&quot;VERS_ORT&quot;)
+WRITE_X3TAGS(&quot;VERS_TEL&quot;)
+WRITE_X3TAGS(&quot;VE_SPLIT&quot;)
+
+WRITE_X3TAGS(&quot;HM_BEZEICHNUNG&quot;)
+
+WRITE_X3TAGS(&quot;SEARCH_LOWESTPRICE&quot;)
+WRITE_X3TAGS(&quot;SEARCH_WITHOUT_MEMBERSHIP&quot;)
+
+WRITE_X3TAGS(&quot;HAUPT_VP_BRUTTO&quot;)
+WRITE_X3TAGS(&quot;HAUPT_VP_NETTO&quot;)
+WRITE_X3TAGS(&quot;HAUPT_VP_REGION&quot;)
+WRITE_X3TAGS(&quot;HAUPT_VP_PARTNER&quot;)
+
+
+WRITE_X3TAGS(&quot;VP_BRUTTO&quot;)
+WRITE_X3TAGS(&quot;VP_NETTO&quot;)
+WRITE_X3TAGS(&quot;VP_PARTNER&quot;)
+WRITE_X3TAGS(&quot;VP_REGION&quot;)  
+
+
+WRITE_X3TAGS(&quot;AG_VE_DRUCK&quot;) 
+WRITE_X3TAGS(&quot;AG_VE_RULE_SET&quot;) 
+WRITE_X3TAGS(&quot;AG_VE_BUCHUNGSKONTO&quot;) 
+
+WRITE_X3TAGS(&quot;AG_VE_BRUTTO&quot;)
+WRITE_X3TAGS(&quot;AG_VE_NETTO&quot;)
+WRITE_X3TAGS(&quot;AG_VE_DECISION&quot;) 
+WRITE_X3TAGS(&quot;AG_VE_MESSAGE&quot;)
+WRITE_X3TAGS(&quot;AG_VE_EXIT_GROUP&quot;)
+WRITE_X3TAGS(&quot;AG_VE_EXIT_CODE&quot;) 
+
+WRITE_X3TAGS(&quot;AG_POS_BRUTTO&quot;)
+WRITE_X3TAGS(&quot;AG_POS_NETTO&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_DECISION&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_MESSAGE&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_EXIT_GROUP&quot;) 
+WRITE_X3TAGS(&quot;AG_POS_EXIT_CODE&quot;) 
+WRITE_X3TAGS(&quot;AG_EXECUTION_TIME&quot;) 
+WRITE_X3TAGS(&quot;AG_DECISION&quot;) 
+WRITE_X3TAGS(&quot;AG_MESSAGE&quot;) 
+WRITE_X3TAGS(&quot;AG_EXIT_GROUP&quot;) 
+WRITE_X3TAGS(&quot;AG_EXIT_CODE&quot;) 
+WRITE_X3TAGS(&quot;AG_INPUT_TS&quot;) 
+WRITE_X3TAGS(&quot;HM_LE_SET_ID&quot;) 
+WRITE_X3TAGS(&quot;EIGENTUM&quot;) 
+WRITE_X3TAGS(&quot;LEISTUNGSART&quot;) 
+WRITE_X3TAGS(&quot;VE_ENTSCHEIDUNG_KT&quot;) 
+WRITE_X3TAGS(&quot;HM_GLZ&quot;) 
+WRITE_X3TAGS(&quot;HM_KZH_TYP&quot;) 
+WRITE_X3TAGS(&quot;HM_KZH_VORGANGSART&quot;) 
+WRITE_X3TAGS(&quot;HM_HMV&quot;) 
+WRITE_X3TAGS(&quot;HM_KZH&quot;) 
+WRITE_X3TAGS(&quot;HM_BRUTTO&quot;) 
+WRITE_X3TAGS(&quot;HM_NETTO&quot;) 
+WRITE_X3TAGS(&quot;HM_MWST&quot;) 
+WRITE_X3TAGS(&quot;HM_NAME&quot;)
+WRITE_X3TAGS(&quot;HM_MENGE&quot;)
+
+WRITE_X3TAGS(&quot;HM_CHECK_EXIST&quot;)
+WRITE_X3TAGS(&quot;HM_FIND_HM_TYPE&quot;) 
+	
+		
+
+
+WRITE_X3TAGS(&quot;VE_DATUM_VON&quot;) 
+WRITE_X3TAGS(&quot;VE_DATUM_BIS&quot;) 
+WRITE_X3TAGS(&quot;VE_BRUTTO&quot;) 
+WRITE_X3TAGS(&quot;VE_NETTO&quot;) 
+
+WRITE_X3TAGS(&quot;RULE_ID&quot;) 
+WRITE_X3TAGS(&quot;RULE_VERSION&quot;)
+WRITE_X3TAGS(&quot;MESSAGE&quot;) 
+WRITE_X3TAGS(&quot;TEMPLATE_ID&quot;) 
+WRITE_X3TAGS(&quot;TEMPLATE_VERSION&quot;) 
+
+WRITE_X3TAGS(&quot;FP_DAUER&quot;) 
+WRITE_X3TAGS(&quot;FP_DAUER_EINHEIT&quot;) 
+
+WRITE_X3TAGS(&quot;KT_PERSON_ID&quot;) 
+WRITE_X3TAGS(&quot;KT_PERSON&quot;) 
+WRITE_X3TAGS(&quot;KT_GST_NAME&quot;) 
+WRITE_X3TAGS(&quot;KT_GST&quot;) 
+WRITE_X3TAGS(&quot;KT_DEP_CODE&quot;) 
+
+WRITE_X3TAGS(&quot;KT_FIRST&quot;) 
+WRITE_X3TAGS(&quot;KT_SECOND&quot;) 
+WRITE_X3TAGS(&quot;KT_THIRD&quot;) 
+WRITE_X3TAGS(&quot;SEARCH_LOWESTPRICE&quot;)
+
+WRITE_X3TAGS(&quot;VERS_INFO_CARE_EFFORT&quot;)
+
+WRITE_X3TAGS(&quot;HM_BEZEICHNUNG&quot;)
+WRITE_X3TAGS(&quot;FP_REF_END&quot;)
+WRITE_X3TAGS(&quot;VERS_PLZ_IN_LIEFERGEBIET&quot;)
+WRITE_X3TAGS(&quot;LIEFER_PLZ_IN_LIEFERGEBIET&quot;)
+
+WRITE_X3TAGS(&quot;BUNDESLAND&quot;)
+
+WRITE_X3TAGS(&quot;CONTRACT_REF_DATE&quot;)
+
+[IS_NGPV] = &quot;&quot;; ASSIGN{[IS_NGPV]:=0}
+WRITE_X3TAGS(&quot;IS_NGPV&quot;)
+WRITE_X3TAGS(&quot;IS_NGPV&quot;)
+WRITE_X3TAGS(&quot;SB_ID&quot;)
+
+WRITE_X3TAGS(&quot;VALIDPRODUCTSPECIALTY&quot;)
+WRITE_X3TAGS(&quot;SPLITWITHQUANTITYDISTRIBUTION&quot;)
+
+WRITE_X3TAGS(&quot;FIRST_RULE_ID&quot;)
+WRITE_X3TAGS(&quot;FIRST_RULE_NAME&quot;)
+WRITE_X3TAGS(&quot;FIRST_MESSAGE&quot;)
+WRITE_X3TAGS(&quot;YEAR_TURN_SPLIT&quot;)
+WRITE_X3TAGS(&quot;BIRTHDAY_SPLIT&quot;)
+WRITE_X3TAGS(&quot;LE_IS_CONTRACT_PARTNER&quot;)
+                     
+WRITE_X3TAGS(&quot;RULE_NAME&quot;)                     
+WRITE_X3TAGS(&quot;RULE_TYPE&quot;)                     
+WRITE_X3TAGS(&quot;RULE_GROUP_NAME&quot;)                     
+WRITE_X3TAGS(&quot;RULE_GROUP_TYPE&quot;)                     
+WRITE_X3TAGS(&quot;RULE_PRODUCT_CATEGORY_ID&quot;)                     
+WRITE_X3TAGS(&quot;RULE_DEPARTMENT_NAME&quot;)                     
+WRITE_X3TAGS(&quot;DEPARTMENT_NAME&quot;) 
+WRITE_X3TAGS(&quot;ADD_REFERENZ_HM&quot;)
+WRITE_X3TAGS(&quot;FIRST_MESSAGE&quot;)
+WRITE_X3TAGS(&quot;POS_NR&quot;)
+WRITE_X3TAGS(&quot;VE_NR&quot;)
+
+
+
+SETVAR [KT_ID]:=2
+
+SETVAR [IS_NGPV]:=0 
+
+
+# START Rules of CARE
+
+
+# Start IF for CARE
+IF [IS_NGPV] = 0 AND ([X3_PROCESS] = &quot;versorgung&quot; AND [X3_STEP] = &quot;neu&quot;) AND [HAUPT_HM_KZH] &lt;&gt; &quot;01&quot; AND [HAUPT_HM_KZH] &lt;&gt; &quot;18&quot;  AND [HAUPT_HM_KZH] &lt;&gt; &quot;13&quot; AND [HAUPT_HM_KZH] &lt;&gt; &quot;14&quot; AND [HAUPT_HM_KZH] &lt;&gt; &quot;15&quot;
+
+## Start HEAD GLOBAL Rules of ruleType INIT
+
+### ----------------------- START GLOBAL IniA: Suche Referenzpauschale V2.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Suche Referenzpauschale V2.0&quot;,&quot;V2.0&quot;,&quot;2021-03-08 11:01:28.0&quot;,&quot;&quot;,&quot;259&quot;,&quot;199941&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF [HM_KZH] = &quot;09&quot; AND [POS_NR] = 1  AND ([HM_KZH_TYP] = &quot;1&quot; OR [HM_KZH_TYP] = &quot;8&quot;) AND [EIGENTUM]=&quot;2&quot; AND (UDF_SUCHE_REFERENZPAUSCHALE_WITH_SPECIFICATION([HM_HMV],[HM_BESONDERHEIT])=1 OR ([ADD_REFERENZ_HM]= 1 AND [HM_LE_SET_ID] &lt;&gt; &quot;&quot;))
+
+ASSIGN{[HM_REF_FOUND]:=1}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199941&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Suche Referenzpauschale V2.0 -------------------------
+
+### ----------------------- START GLOBAL Default Genehmigungsverzögerung -----------------------
+
+
+UDF_SET_EXECUTION_TIME(10,40)=0;NOAUTOGEN
+
+
+
+
+### ----------------------- END GLOBAL Default Genehmigungsverzögerung -------------------------
+
+### ----------------------- START GLOBAL Setze Alternative Dauer -----------------------
+
+
+UDF_ALTERNATIVE_DAUER()
+UDF_CLEAN_UP_HMV([HM_HMV])
+[HM_GLZ] = 0; ASSIGN{[HM_GLZ]:=&quot;&quot;}
+UDF_SELECT_BENEFIT()
+
+
+
+### ----------------------- END GLOBAL Setze Alternative Dauer -------------------------
+
+### ----------------------- START GLOBAL IniA: Ermittlung Vertragsdaten V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Ermittlung Vertragsdaten V1.0&quot;,&quot;V1.0&quot;,&quot;2019-04-05 09:43:52.0&quot;,&quot;&quot;,&quot;13&quot;,&quot;199946&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+[VERTRAG_IKLE] = [LE_IK];ASSIGN{[VP_PARTNER]:=1}
+[VERTRAG_PLZ] = 1;ASSIGN{[VP_REGION]:=1}
+UDF_SUCHE_VERTRAG_BARMER([LE_IK],[HM_LEGS])
+[POS_NR] = 1;ASSIGN{[HAUPT_VP_REGION]:=[VP_REGION];[HAUPT_VP_PARTNER]:=[VP_PARTNER]}
+
+
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199946&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Ermittlung Vertragsdaten V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Ersetze Versichertendaten V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Ersetze Versichertendaten V1.0&quot;,&quot;V1.0&quot;,&quot;2014-11-11 16:36:52.0&quot;,&quot;&quot;,&quot;153&quot;,&quot;199948&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF [VERS_INFO_EINDEUTIG] = &quot;1&quot;
+#loginfo[199948][153]:[VERS_VNR],[VERS_VORNAME],[VERS_NACHNAME],[VERS_NACHNAME_VORSATZ],[VERS_TITEL],[VERS_LKZ],[VERS_STATUS],[VERS_ANREDE],[VERS_STRASSE],[VERS_ORT],[VERS_PLZ],[VERS_TEL]
+
+ASSIGN{[VERS_VNR]:=[VERS_INFO_VNR];[VERS_VORNAME]:=[VERS_INFO_VORNAME];[VERS_NACHNAME]:=[VERS_INFO_NACHNAME]}
+ ASSIGN{[VERS_NACHNAME_VORSATZ]:=[VERS_INFO_NACHNAME_VORSATZ];[VERS_TITEL]:=[VERS_INFO_TITEL]}
+ ASSIGN{[VERS_LKZ]:=[VERS_INFO_LKZ];[VERS_STATUS]:=[VERS_INFO_STATUS];[VERS_ANREDE]:=[VERS_INFO_ANREDE]}
+ ASSIGN{[VERS_STRASSE]:=[VERS_INFO_STRASSE];[VERS_ORT]:=[VERS_INFO_ORT];[VERS_PLZ]:=[VERS_INFO_PLZ];[VERS_TEL]:=[VERS_INFO_TELNR]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199948&quot;)
+
+
+### ----------------------- END GLOBAL IniS: Ersetze Versichertendaten V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniA: Vorversorgungsermittlung V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Vorversorgungsermittlung V1.0&quot;,&quot;V1.0&quot;,&quot;2014-10-20 10:32:36.0&quot;,&quot;&quot;,&quot;124&quot;,&quot;199950&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+UDF_COUNT_PREV_CARE([HM_HMV2])
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199950&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Vorversorgungsermittlung V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniA: Versicherten- und Leistungsdatenermittlung V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Versicherten- und Leistungsdatenermittlung V1.0&quot;,&quot;V1.0&quot;,&quot;2014-11-11 18:33:00.0&quot;,&quot;&quot;,&quot;125&quot;,&quot;199951&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199951][125]:[VERS_VORMUND],[VERS_VIP],[VERS_GESCHUETZT_GEK],[VERS_GESCHUETZT],[VERS_END_DATE],[VERS_START],[VERS_END],[VERS_ZEUGENSCHUTZ],[VERS_IN_KRANKENHAUS],[VERS_KZ_KV],[STATUS_MFR],[GRUNDVERSEND],[VERS_PERSON_TYPE],[VERS_INFO_EINDEUTIG],[VERS_INFO_VNR],[VERS_INFO_VORNAME],[VERS_INFO_NACHNAME],[VERS_INFO_LKZ],[VERS_INFO_TITEL],[VERS_INFO_NACHNAME_VORSATZ],[VERS_INFO_STATUS],[VERS_INFO_ANREDE],[VERS_INFO_STRASSE],[VERS_INFO_ORT],[VERS_INFO_TELNR],[VERS_INFO_CARE_EFFORT],[VERS_INFO_CARE_TYPE]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199951&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Versicherten- und Leistungsdatenermittlung V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniA: Ermittlung GLZ aus Versorgungszeitraum V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniA: Ermittlung GLZ aus Versorgungszeitraum V1.0&quot;,&quot;V1.0&quot;,&quot;2014-10-20 10:32:22.0&quot;,&quot;&quot;,&quot;126&quot;,&quot;199952&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199952][126]:[HM_GLZ]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199952&quot;)
+
+
+### ----------------------- END GLOBAL IniA: Ermittlung GLZ aus Versorgungszeitraum V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Setze Hilfsmitteltyp automatisiert V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp automatisiert V1.0&quot;,&quot;V1.0&quot;,&quot;2014-10-20 10:32:36.0&quot;,&quot;&quot;,&quot;152&quot;,&quot;199954&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199954][152]:[HM_KZH_TYP]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199954&quot;)
+
+
+### ----------------------- END GLOBAL IniS: Setze Hilfsmitteltyp automatisiert V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Setze Vorgangsart und KT automatisiert V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart und KT automatisiert V1.0&quot;,&quot;V1.0&quot;,&quot;2014-11-11 18:35:09.0&quot;,&quot;&quot;,&quot;154&quot;,&quot;199955&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199955][154]:[HM_KZH_VORGANGSART]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199955&quot;)
+
+
+### ----------------------- END GLOBAL IniS: Setze Vorgangsart und KT automatisiert V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Setze Kontierung automatisiert V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung automatisiert V1.0&quot;,&quot;V1.0&quot;,&quot;2015-06-02 10:45:03.0&quot;,&quot;&quot;,&quot;151&quot;,&quot;199956&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199956][151]:[AG_VE_BUCHUNGSKONTO]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199956&quot;)
+
+
+### ----------------------- END GLOBAL IniS: Setze Kontierung automatisiert V1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS:Setze EV automatisiert V 1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS:Setze EV automatisiert V 1.0&quot;,&quot;V1.0&quot;,&quot;2015-05-22 09:07:46.0&quot;,&quot;&quot;,&quot;214&quot;,&quot;199958&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199958][214]:[EIGENTUM]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199958&quot;)
+
+
+### ----------------------- END GLOBAL IniS:Setze EV automatisiert V 1.0 -------------------------
+
+### ----------------------- START GLOBAL IniS: Setze Kennzeichen Krankenhausentlassmanagement V1.0 -----------------------
+
+
+IF [SUBPROCESSID] = &quot;EAB&quot; AND [VO_HOSPITALDISCHARGE] = &quot;0&quot; AND UDF_STR_STARTSWITH([VO_ARZTNUMMER],&quot;4444444&quot;) = 1
+
+  ASSIGN{[VO_HOSPITALDISCHARGE]:=1}
+
+ENDIF #CONDITIONSIF
+
+
+
+### ----------------------- END GLOBAL IniS: Setze Kennzeichen Krankenhausentlassmanagement V1.0 -------------------------
+
+## End HEAD GLOBAL Rules of ruleType INIT
+
+## Start RULE GLOBAL Rules of ruleType INIT
+
+### ----------------------- START GLOBAL IniS:Vervollständigung oder Ersetzung der Verordnerdaten V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS:Vervollständigung oder Ersetzung der Verordnerdaten V1.0&quot;,&quot;V1.0&quot;,&quot;2014-11-18 10:01:58.0&quot;,&quot;&quot;,&quot;136&quot;,&quot;199957&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1
+#loginfo[199957][136]:[VERORDNER_NAME],[VERORDNER_VORNAME],[VERORDNER_TITEL],[VO_BETRIEBSSTAETTENNAME],[VO_ARZTNUMMER],[VO_BETRIEBSSTAETTENNUMMER],[VERORDNER_ADRESSE_STRASSE],[VERORDNER_ADRESSE_HAUSNR],[VERORDNER_ADRESSE_LKZ],[VERORDNER_ADRESSE_PLZ],[VERORDNER_ADRESSE_ORT],[VERORDNER_ADRESSE_TELEFON],[VERORDNER_ADRESSE_BUNDESLAND]
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199957&quot;)
+
+
+### ----------------------- END GLOBAL IniS:Vervollständigung oder Ersetzung der Verordnerdaten V1.0 -------------------------
+
+## End RULE GLOBAL Rules of ruleType INIT
+
+## Start  Rules of ruleType INIT
+
+### ----------------------- START Anreich: Pseudo Referenzpauschale erstellen -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;Anreich: Pseudo Referenzpauschale erstellen&quot;,&quot;V1.0&quot;,&quot;2020-11-26 14:16:20.0&quot;,&quot;&quot;,&quot;385&quot;,&quot;202960&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [HM_KZH] = &quot;09&quot; AND [POS_NR] = 1 AND ([HM_KZH_TYP] = &quot;1&quot; OR [HM_KZH_TYP] = &quot;8&quot;) AND [EIGENTUM]=&quot;2&quot;
+
+SETVAR [ADD_REFERENZ_HM]:=1
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202960&quot;)
+
+
+### ----------------------- END Anreich: Pseudo Referenzpauschale erstellen -------------------------
+
+### ----------------------- START Ini: Herkunft des Versicherten (Fusion) -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;Ini: Herkunft des Versicherten (Fusion)&quot;,&quot;V1.0&quot;,&quot;2020-12-10 14:30:38.0&quot;,&quot;&quot;,&quot;314&quot;,&quot;202970&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND ((&quot;1&quot; = 1 AND [VERS_BG_WELT] = &quot;B&quot; ) OR (&quot;1&quot; = 2 AND [VERS_BG_WELT] = &quot;D&quot; ))
+
+ 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202970&quot;)
+
+
+### ----------------------- END Ini: Herkunft des Versicherten (Fusion) -------------------------
+
+### ----------------------- START IniS: Setze EV manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze EV manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2015-10-06 09:01:05.0&quot;,&quot;&quot;,&quot;163&quot;,&quot;202980&quot;,&quot;&quot;,&quot;&quot;)
+
+
+[HM_HMV] = &quot;11.11.11.1111&quot; AND [HM_KZH_VORGANGSART] = &quot;123&quot; AND [VE_NETTO] &lt; 0.0;ASSIGN{[EIGENTUM]:=0}
+[HM_HMV] = &quot;11.11.11.1111&quot; AND [HM_KZH_VORGANGSART] = &quot;103&quot; AND [VE_NETTO] &gt; 0.0;ASSIGN{[EIGENTUM]:=1}
+[HM_HMV] = &quot;55.55.55.5555&quot; AND [HM_KZH_VORGANGSART] = &quot;106&quot; AND [VE_NETTO] &lt; 0.0;ASSIGN{[EIGENTUM]:=2}
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202980&quot;)
+
+
+### ----------------------- END IniS: Setze EV manuell V1.0 -------------------------
+
+## End  Rules of ruleType INIT
+
+## Start Rules of ruleType INIT PG 18
+
+IF [HM_HMV2] = &quot;18&quot; 
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202957&quot;,&quot;18&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND 1 = 1 
+
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;100&quot;;[HM_KZH]:=&quot;00&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202957&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Nicht zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202967&quot;,&quot;18&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[HM_KZH_TYP]:=1}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=1}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202967&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze GLZ manuell -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze GLZ manuell&quot;,&quot;V1.0&quot;,&quot;2018-09-04 15:17:30.0&quot;,&quot;&quot;,&quot;348&quot;,&quot;202978&quot;,&quot;18&quot;,&quot;&quot;)
+
+
+
+IF 1 = 0 OR 1 = &quot;&quot;
+                ASSIGN{[HM_GLZ]:=&quot;&quot;; [FP_DAUER]:=&quot;&quot;}
+                ELSE
+                ASSIGN{[HM_GLZ]:=1; [FP_DAUER]:=1}
+                ENDIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202978&quot;)
+
+
+### ----------------------- END IniS: Setze GLZ manuell -------------------------
+
+ENDIF # PG 18
+## End Rules of ruleType INIT PG 18
+
+## Start Rules of ruleType INIT PG 15
+
+IF [HM_HMV2] = &quot;15&quot; 
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202956&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND 1 = 1 
+
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;107&quot;;[HM_KZH]:=&quot;08&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202956&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202966&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202966&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Trennung VE Jahreswechsel V2.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Trennung VE Jahreswechsel V2.0&quot;,&quot;V2.0&quot;,&quot;2020-10-30 02:06:36.0&quot;,&quot;&quot;,&quot;371&quot;,&quot;202977&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+IF UDF_GET_YEAR([VE_DATUM_VON]) &lt;&gt; UDF_GET_YEAR([VE_DATUM_BIS])
+
+ASSIGN{[YEAR_TURN_SPLIT]:=1}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202977&quot;)
+
+
+### ----------------------- END IniS: Trennung VE Jahreswechsel V2.0 -------------------------
+
+### ----------------------- START IniS: Trennung VE 18. Lebensjahr V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Trennung VE 18. Lebensjahr V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-06 15:03:41.0&quot;,&quot;&quot;,&quot;165&quot;,&quot;202991&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND UDF_CHECK_VALUE_IN_LIST([HAUPT_HM_KZH_TYP],&quot;2,3,4,5&quot;) = 1 AND UDF_CHECK_AGE_FULLFILLED_IN_INTERVAL([VE_DATUM_VON], [VE_DATUM_BIS],[VERS_GEBDATUM],18) = 1
+
+ASSIGN{[VE_SPLIT]:=1}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202991&quot;)
+
+
+### ----------------------- END IniS: Trennung VE 18. Lebensjahr V1.0 -------------------------
+
+### ----------------------- START Genehmigungsverzögerung -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;Genehmigungsverzögerung&quot;,&quot;V1.0&quot;,&quot;2015-03-05 14:59:29.0&quot;,&quot;1,1&quot;,&quot;26&quot;,&quot;202995&quot;,&quot;15&quot;,&quot;&quot;)
+
+
+
+UDF_SET_EXECUTION_TIME(1,1)
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202995&quot;)
+
+
+### ----------------------- END Genehmigungsverzögerung -------------------------
+
+ENDIF # PG 15
+## End Rules of ruleType INIT PG 15
+
+## Start Rules of ruleType INIT PG 01
+
+IF [HM_HMV2] = &quot;01&quot; 
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202963&quot;,&quot;01&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202963&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202971&quot;,&quot;01&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND 1 = 1 
+
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;108&quot;;[HM_KZH]:=&quot;08&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202971&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Trennung VE Jahreswechsel V2.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;Trennung Jahreswechsel&quot;,&quot;IniS: Trennung VE Jahreswechsel V2.0&quot;,&quot;V2.0&quot;,&quot;2020-10-30 02:06:36.0&quot;,&quot;&quot;,&quot;371&quot;,&quot;202981&quot;,&quot;01&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202981$:=0}
+
+UDF_GET_YEAR([VE_DATUM_VON]) &lt;&gt; UDF_GET_YEAR([VE_DATUM_BIS]);ASSIGN{$RULEHIT_202981$:=1 }
+
+
+# #### group_31109
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202981&quot;)
+
+
+### ----------------------- END IniS: Trennung VE Jahreswechsel V2.0 -------------------------
+
+### ----------------------- START Ini: HMV in Liste V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;Trennung Jahreswechsel&quot;,&quot;Ini: HMV in Liste V1.0&quot;,&quot;V1.0&quot;,&quot;2021-04-20 07:48:03.0&quot;,&quot;&quot;,&quot;139&quot;,&quot;202985&quot;,&quot;01&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202985$:=0}
+1 = 1  AND (   ([HM_HMV] = &quot;01.00.99.0003&quot; AND  [HM_KZH] = &quot;08&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0003&quot; AND  [HM_KZH] = &quot;09&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0004&quot; AND  [HM_KZH] = &quot;08&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0004&quot; AND  [HM_KZH] = &quot;09&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) );ASSIGN{$RULEHIT_202985$:=1 }
+
+
+# #### group_31109
+IF $RULEHIT_202981$=1 AND $RULEHIT_202985$=1
+
+ASSIGN{[YEAR_TURN_SPLIT]:=1}
+ 
+
+ENDIF #GROUPIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202985&quot;)
+
+
+### ----------------------- END Ini: HMV in Liste V1.0 -------------------------
+
+### ----------------------- START IniS: Trennung VE 18. Lebensjahr V2.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;Trennung 18 Lebensjahr&quot;,&quot;IniS: Trennung VE 18. Lebensjahr V2.0&quot;,&quot;V2.0&quot;,&quot;2020-10-30 02:06:36.0&quot;,&quot;&quot;,&quot;372&quot;,&quot;202989&quot;,&quot;01&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202989$:=0}
+
+1 = 1 AND UDF_CHECK_AGE_FULLFILLED_IN_INTERVAL([VE_DATUM_VON],[VE_DATUM_BIS],[VERS_GEBDATUM],18)=1;ASSIGN{$RULEHIT_202989$:=1 }
+
+
+# #### group_31111
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202989&quot;)
+
+
+### ----------------------- END IniS: Trennung VE 18. Lebensjahr V2.0 -------------------------
+
+### ----------------------- START Ini: HMV in Liste V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;Trennung 18 Lebensjahr&quot;,&quot;Ini: HMV in Liste V1.0&quot;,&quot;V1.0&quot;,&quot;2021-04-20 07:48:03.0&quot;,&quot;&quot;,&quot;139&quot;,&quot;202993&quot;,&quot;01&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202993$:=0}
+1 = 1  AND (   ([HM_HMV] = &quot;01.00.99.0003&quot; AND  [HM_KZH] = &quot;08&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0003&quot; AND  [HM_KZH] = &quot;09&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0004&quot; AND  [HM_KZH] = &quot;09&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) OR ([HM_HMV] = &quot;01.00.99.0004&quot; AND  [HM_KZH] = &quot;08&quot;   AND  [HM_KZH_TYP] = &quot;2&quot;  ) );ASSIGN{$RULEHIT_202993$:=1 }
+
+
+# #### group_31111
+IF $RULEHIT_202989$=1 AND $RULEHIT_202993$=1
+
+ASSIGN{[BIRTHDAY_SPLIT]:=1}
+ 
+
+ENDIF #GROUPIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202993&quot;)
+
+
+### ----------------------- END Ini: HMV in Liste V1.0 -------------------------
+
+ENDIF # PG 01
+## End Rules of ruleType INIT PG 01
+
+## Start Rules of ruleType INIT PG 10
+
+IF [HM_HMV2] = &quot;10&quot; 
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202964&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND 1 = 1 
+
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;110&quot;;[HM_KZH]:=&quot;09&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202964&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Genehmigungsverzögerung V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Genehmigungsverzögerung V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-23 14:34:05.0&quot;,&quot;1,1&quot;,&quot;150&quot;,&quot;202972&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+UDF_SET_EXECUTION_TIME(1,1)
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202972&quot;)
+
+
+### ----------------------- END IniS: Genehmigungsverzögerung V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202975&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202975&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kontierung manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2018-05-25 13:47:40.0&quot;,&quot;&quot;,&quot;161&quot;,&quot;202982&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [STATUS_MFR] = 1 
+
+ASSIGN{[AG_VE_BUCHUNGSKONTO]:=&quot;4400000&quot;} 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202982&quot;)
+
+
+### ----------------------- END IniS: Setze Kontierung manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kontierung manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2018-05-25 13:47:40.0&quot;,&quot;&quot;,&quot;161&quot;,&quot;202986&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [STATUS_MFR] = 3 
+
+ASSIGN{[AG_VE_BUCHUNGSKONTO]:=&quot;4400000&quot;} 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202986&quot;)
+
+
+### ----------------------- END IniS: Setze Kontierung manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kontierung manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2018-05-25 13:47:40.0&quot;,&quot;&quot;,&quot;161&quot;,&quot;202990&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [STATUS_MFR] = 4 
+
+ASSIGN{[AG_VE_BUCHUNGSKONTO]:=&quot;4400000&quot;} 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202990&quot;)
+
+
+### ----------------------- END IniS: Setze Kontierung manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kontierung manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kontierung manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2018-05-25 13:47:40.0&quot;,&quot;&quot;,&quot;161&quot;,&quot;202994&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+IF 1 = 1 AND [STATUS_MFR] = 5 
+
+ASSIGN{[AG_VE_BUCHUNGSKONTO]:=&quot;4400000&quot;} 
+
+ENDIF #CONDITIONSIF
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202994&quot;)
+
+
+### ----------------------- END IniS: Setze Kontierung manuell V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Kostenträger manuell -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;IniS: Setze Kostenträger manuell&quot;,&quot;V1.0&quot;,&quot;2015-05-22 14:15:44.0&quot;,&quot;1&quot;,&quot;216&quot;,&quot;202996&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+
+ASSIGN{[VE_KOSTENTRAEGER]:=1;[VE_ENTSCHEIDUNG_KT]:=1}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202996&quot;)
+
+
+### ----------------------- END IniS: Setze Kostenträger manuell -------------------------
+
+ENDIF # PG 10
+## End Rules of ruleType INIT PG 10
+
+## Start Rules of ruleType INIT PG 21
+
+IF [HM_HMV2] = &quot;21&quot; 
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202969&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202969$:=0}
+
+1 = 1;ASSIGN{$RULEHIT_202969$:=1 }
+
+
+# #### group_31108
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202969&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START Ini: HMV in Liste V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;Ini: HMV in Liste V1.0&quot;,&quot;V1.0&quot;,&quot;2021-04-20 07:48:03.0&quot;,&quot;&quot;,&quot;139&quot;,&quot;202979&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202979$:=0}
+1 = 1  AND (   ([HM_HMV] = &quot;21.43.01.1005&quot; AND  [HM_KZH] = &quot;04&quot;  ) );ASSIGN{$RULEHIT_202979$:=1 }
+
+
+# #### group_31108
+IF $RULEHIT_202969$=1 AND $RULEHIT_202979$=1
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+ 
+
+ENDIF #GROUPIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202979&quot;)
+
+
+### ----------------------- END Ini: HMV in Liste V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Hilfsmitteltyp manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;IniS: Setze Hilfsmitteltyp manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-01-05 18:14:53.0&quot;,&quot;Zum Verbrauch bestimmt&quot;,&quot;160&quot;,&quot;202984&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202984$:=0}
+
+1 = 1;ASSIGN{$RULEHIT_202984$:=1 }
+
+
+# #### group_31110
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202984&quot;)
+
+
+### ----------------------- END IniS: Setze Hilfsmitteltyp manuell V1.0 -------------------------
+
+### ----------------------- START Ini: HMV in Liste V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;Ini: HMV in Liste V1.0&quot;,&quot;V1.0&quot;,&quot;2021-04-20 07:48:03.0&quot;,&quot;&quot;,&quot;139&quot;,&quot;202988&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202988$:=0}
+1 = 1  AND (   ([HM_HMV] = &quot;21.43.01.1005&quot;) );ASSIGN{$RULEHIT_202988$:=1 }
+
+
+# #### group_31110
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202988&quot;)
+
+
+### ----------------------- END Ini: HMV in Liste V1.0 -------------------------
+
+### ----------------------- START IniS: Setze Vorgangsart manuell V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;und&quot;,&quot;New Group&quot;,&quot;IniS: Setze Vorgangsart manuell V1.0&quot;,&quot;V1.0&quot;,&quot;2020-11-24 12:36:37.0&quot;,&quot;&quot;,&quot;162&quot;,&quot;202992&quot;,&quot;21&quot;,&quot;&quot;)
+
+ASSIGN{$RULEHIT_202992$:=0}
+
+1 = 1 AND 1 = 1 ;ASSIGN{$RULEHIT_202992$:=1 }
+
+
+# #### group_31110
+IF $RULEHIT_202984$=1 AND $RULEHIT_202988$=1 AND $RULEHIT_202992$=1
+
+ASSIGN{[HM_KZH_TYP]:=2}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH_TYP]:=2}
+ 
+ASSIGN{[HM_KZH_VORGANGSART]:=&quot;100&quot;;[HM_KZH]:=&quot;00&quot;}
+ [POS_NR] = 1;ASSIGN{[HAUPT_HM_KZH]:=[HM_KZH]}
+
+ENDIF #GROUPIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202992&quot;)
+
+
+### ----------------------- END IniS: Setze Vorgangsart manuell V1.0 -------------------------
+
+ENDIF # PG 21
+## End Rules of ruleType INIT PG 21
+
+## Start FOOTER GLOBAL Rules of ruleType INIT
+
+### ----------------------- START GLOBAL Ersetze Vertragsdaten -----------------------
+
+
+IF [VP_OVERRIDE] = 1 AND UDF_PRUEFE_BRUTTO_PREIS([VP_BRUTTO],[VP_NETTO],[HM_BRUTTO],[HM_NETTO],1,1) = 1 AND [KT_IK] &lt;&gt; &quot;104940005&quot;
+  UDF_ERSETZE_VERTRAG([VP_BRUTTO],[VP_NETTO],[VP_MWST])
+ENDIF
+
+IF [VP_OVERRIDE] = 1 AND [KT_IK] = &quot;104940005&quot;
+  WRITE_X3TAGS(&quot;HM_NAME&quot;)
+  WRITE_X3TAGS(&quot;VE_NAME&quot;)
+  WRITE_X3TAGS(&quot;HM_GLZ&quot;)
+  WRITE_X3TAGS(&quot;HM_MWST&quot;)
+  ASSIGN {[HM_NAME]:=[VERTRAG_PRODUKT_NAME]; [VE_NAME]:=[VERTRAG_PRODUKT_NAME];[HM_GLZ]:=[VERTRAG_GLZ];[HM_MWST]:=[VERTRAG_MWST]}
+ENDIF
+
+IF [VP_OVERRIDE_OVER_PRICE] = 1 AND UDF_PRUEFE_BRUTTO_PREIS([VP_BRUTTO],[VP_NETTO],[HM_BRUTTO],[HM_NETTO],1,3) = 1
+   UDF_ERSETZE_VERTRAG([VP_BRUTTO],[VP_NETTO],[VP_MWST])
+ENDIF
+
+
+IF [VP_OVERRIDE_OVER_KZH] = 1 AND [VERTRAG_BRUTTO]=[HM_BRUTTO] AND ([VERTRAG_GLZ]=[HM_GLZ] OR [VERTRAG_GLZ] = &quot;&quot; OR [VERTRAG_GLZ] = &quot;0&quot;) AND [VERTRAG_IKLE]=[LE_IK]
+    ASSIGN{[HM_KZH]:=[VERTRAG_KZH]}
+ENDIF
+
+
+
+
+### ----------------------- END GLOBAL Ersetze Vertragsdaten -------------------------
+
+## End FOOTER GLOBAL Rules of ruleType INIT
+
+## Start HEAD GLOBAL Rules of ruleType ABWEISUNG
+
+IF [X3_ORIGIN] &lt;&gt; &quot;skv&quot; AND [X3_ORIGIN] &lt;&gt; &quot;skv-light&quot;
+### ----------------------- START GLOBAL RW: ICD10 Schlüssel prüfen und korrigieren -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;RW: ICD10 Schlüssel prüfen und korrigieren&quot;,&quot;V1.0&quot;,&quot;2014-10-07 16:07:58.0&quot;,&quot;&quot;,&quot;72&quot;,&quot;199928&quot;,&quot;&quot;,&quot;&quot;)
+
+
+IF 1 = 1 AND [KVA_MELDUNGSART] &lt;&gt; 3 AND [KT_GST] &lt;&gt; &quot;CLR&quot; AND [X3_SEND_FROM] &lt;&gt; &quot;zhp_clearing&quot;
+	UDF_PRUEFE_ICD10_LENGTH() = 0;ABWEISUNG =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-72&quot;;[EXIT_CODE]:=&quot;1&quot;;[RULE_ID]:=199928;[RULE_VERSION]:=3309}
+	UDF_PRUEFE_DIAGNOSE() = 0;ABWEISUNG =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-72&quot;;[EXIT_CODE]:=&quot;1&quot;;[RULE_ID]:=199928;[RULE_VERSION]:=3309}
+ENDIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199928&quot;)
+
+
+### ----------------------- END GLOBAL RW: ICD10 Schlüssel prüfen und korrigieren -------------------------
+
+### ----------------------- START GLOBAL RW: Positionsänderungen (Preise, Produktbesonderheit, Menge) V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;RW: Positionsänderungen (Preise, Produktbesonderheit, Menge) V1.0&quot;,&quot;V1.0&quot;,&quot;2018-07-25 09:01:03.0&quot;,&quot;&quot;,&quot;67&quot;,&quot;199938&quot;,&quot;&quot;,&quot;&quot;)
+
+
+
+IF [KVA_MELDUNGSART] &lt;&gt; 3 AND [KT_GST] &lt;&gt; &quot;CLR&quot; AND [X3_SEND_FROM] &lt;&gt; &quot;zhp_clearing&quot; 
+	[VE_BRUTTO] &lt; 0;ABWEISUNG =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-67&quot;;[EXIT_CODE]:=&quot;0&quot;;[RULE_ID]:=199938;[RULE_VERSION]:=3309;[MESSAGE]:=UDF_MESSAGE(&quot;7007:Der Vorgang kann nicht an den angegebenen Kostenträger übermittelt werden, da die {0}. Versorgungseinheit einen negativen Betrag aufweist.&quot;,[VE_NR])}
+	[HM_HAUPTHIMI] = 1 AND [HM_BRUTTO] &lt; 0;ABWEISUNG =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-67&quot;;[EXIT_CODE]:=&quot;0&quot;;[RULE_ID]:=199938;[RULE_VERSION]:=3309;[MESSAGE]:=UDF_MESSAGE(&quot;7008:Der Vorgang kann nicht an den angegebenen Kostenträger übermittelt werden, da die {0}. Position der {1}. Versorgungseinheit einen negativen Betrag aufweist.&quot;,[POS_NR],[VE_NR])}
+	[VE_ZUZAHLUNG] &lt; 0;ABWEISUNG =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-67&quot;;[EXIT_CODE]:=&quot;0&quot;;[RULE_ID]:=199938;[RULE_VERSION]:=3309;[MESSAGE]:=UDF_MESSAGE(&quot;7009:Der Vorgang kann nicht an den angegebenen Kostenträger übermittelt werden, da die {0}. Versorgungseinheit einen negativen Zuzahlungsbetrag aufweist.&quot;,[VE_NR])}
+ENDIF
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199938&quot;)
+
+
+### ----------------------- END GLOBAL RW: Positionsänderungen (Preise, Produktbesonderheit, Menge) V1.0 -------------------------
+
+ENDIF #ABWEISUNG
+## End HEAD GLOBAL Rules of ruleType ABWEISUNG
+
+## Start HEAD GLOBAL Rules of ruleType NOAUTOGEN
+
+### ----------------------- START GLOBAL MB: nicht erlaubte Kennzeichen Hilfsmittel (KZH) ausschließen V1.0 -----------------------
+
+IF [HAUPT_HM_KZH] = &quot;02&quot;
+	[HM_KZH] = &quot;18&quot; OR [HM_KZH] = &quot;14&quot;;NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-7&quot;;[EXIT_CODE]:=&quot;0&quot;;[RULE_ID]:=199929;[RULE_VERSION]:=3309;[MESSAGE]:=&quot;KZH nicht fuer AG erlaubt&quot;} 
+ELSE
+	[HM_KZH] = &quot;01&quot; OR [HM_KZH] = &quot;18&quot; OR [HM_KZH] = &quot;14&quot;;NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-7&quot;;[EXIT_CODE]:=&quot;0&quot;;[RULE_ID]:=199929;[RULE_VERSION]:=3309;[MESSAGE]:=&quot;KZH nicht fuer AG erlaubt&quot;} 
+ENDIF
+
+
+
+### ----------------------- END GLOBAL MB: nicht erlaubte Kennzeichen Hilfsmittel (KZH) ausschließen V1.0 -------------------------
+
+### ----------------------- START GLOBAL MB: Gültiges Versicherungsverhältnis V1.0 -----------------------
+
+1 = 1 AND [VERS_ANSPRUCH] &lt;&gt; &quot;00002&quot;;NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-9&quot;;[EXIT_CODE]:=&quot;1&quot;;[RULE_ID]:=199939;[RULE_VERSION]:=3309;[MESSAGE]:=&quot;Versichert hat keinen Anspruch&quot;} 
+
+
+### ----------------------- END GLOBAL MB: Gültiges Versicherungsverhältnis V1.0 -------------------------
+
+### ----------------------- START GLOBAL MB: keine PZN-HMV Zuordnung V2.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;MB: keine PZN-HMV Zuordnung V2.0&quot;,&quot;V2.0&quot;,&quot;2021-04-23 12:40:15.0&quot;,&quot;&quot;,&quot;155&quot;,&quot;199942&quot;,&quot;&quot;,&quot;&quot;)
+
+
+1 = 1 AND (([HM_HMV] = &quot;&quot; AND [HM_PZN] &lt;&gt; &quot;&quot;) OR [ACCESS_LEVEL] = 3); NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-155&quot;;[EXIT_CODE]:=&quot;1&quot;;[RULE_ID]:=199942;[RULE_VERSION]:=3309;[MESSAGE]:=&quot;Keine eindeutige PZN-HMV Zuordnung gefunden&quot;} 
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199942&quot;)
+
+
+### ----------------------- END GLOBAL MB: keine PZN-HMV Zuordnung V2.0 -------------------------
+
+### ----------------------- START GLOBAL MB: Prüfe Referenzpauschale V 1.0 -----------------------
+
+[POS_NR] = 1 AND [HM_REF_FOUND] = 0 AND [HM_KZH] = &quot;09&quot;;NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-8&quot;;[EXIT_CODE]:=&quot;0&quot;;[RULE_ID]:=199945;[RULE_VERSION]:=3309;[MESSAGE]:=&quot;FFP ohne Referenzpauschale&quot;}
+[POS_NR] = 1 AND [HM_LE_SET_ID] = &quot;&quot; AND [HM_KZH] = &quot;09&quot;;NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-8&quot;;[EXIT_CODE]:=&quot;0&quot;;[RULE_ID]:=199945;[RULE_VERSION]:=3309;[MESSAGE]:=&quot;FFP ohne Referenzpauschale&quot;} 
+
+
+
+### ----------------------- END GLOBAL MB: Prüfe Referenzpauschale V 1.0 -------------------------
+
+### ----------------------- START GLOBAL MB: HMV mind.7 Stellen V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;MB: HMV mind.7 Stellen V1.0&quot;,&quot;V1.0&quot;,&quot;2021-04-23 12:47:31.0&quot;,&quot;&quot;,&quot;159&quot;,&quot;199947&quot;,&quot;&quot;,&quot;&quot;)
+
+
+1 = 1 AND UDF_STR_LENGTH([HM_HMV]) &lt; 10; NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-159&quot;;[EXIT_CODE]:=&quot;1&quot;;[RULE_ID]:=199947;[RULE_VERSION]:=3309;[MESSAGE]:=&quot;HMV hat weniger als 7. Stellen&quot;} 
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;199947&quot;)
+
+
+### ----------------------- END GLOBAL MB: HMV mind.7 Stellen V1.0 -------------------------
+
+## End HEAD GLOBAL Rules of ruleType NOAUTOGEN
+
+## Start  Rules of ruleType NOAUTOGEN
+
+### ----------------------- START MB: Anspruchsprüfung Beihilfe -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;MB: Anspruchsprüfung Beihilfe&quot;,&quot;V1.0&quot;,&quot;2021-06-24 11:55:06.0&quot;,&quot;&quot;,&quot;344&quot;,&quot;202961&quot;,&quot;&quot;,&quot;&quot;)
+
+
+[KZ_PV] = 3;NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;0-0-344&quot;;[EXIT_CODE]:=&quot;0&quot;;[MESSAGE]:=UDF_MESSAGE_REPLACE(&quot;Versicherter ist beihilfeberechtigt/ hat hälftigen Anspruch&quot;);[RULE_ID]:=202961;[RULE_VERSION]:=3389;[RULE_NAME]:=&quot;MB: Anspruchsprüfung Beihilfe&quot;;[RULE_TYPE]:=&quot;MB&quot;;[RULE_GROUP_NAME]:=&quot;&quot;;[RULE_GROUP_TYPE]:=&quot;&quot;;[RULE_PRODUCT_CATEGORY_ID]:=&quot;0&quot;;[RULE_DEPARTMENT_NAME]:=&quot;&quot;;[EXIT_CATEGORY]:=&quot;&quot;}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202961&quot;)
+
+
+### ----------------------- END MB: Anspruchsprüfung Beihilfe -------------------------
+
+### ----------------------- START MB: Prüfe Erstversorgung bei Pauschalversorgungen V 1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;MB: Prüfe Erstversorgung bei Pauschalversorgungen V 1.0&quot;,&quot;V1.0&quot;,&quot;2015-05-22 16:19:08.0&quot;,&quot;&quot;,&quot;217&quot;,&quot;202974&quot;,&quot;&quot;,&quot;&quot;)
+
+1 = 1 AND [HM_KZH]=&quot;08&quot; AND ( UDF_BARMER_CHECK_INITAL_SUPPLY([HM_HMV],&quot;22.22.22.2222&quot;,4,0,[VO_DATUM],[LE_IK]) = 0);NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;0-0-217&quot;;[EXIT_CODE]:=&quot;1&quot;;[MESSAGE]:=UDF_MESSAGE_REPLACE(&quot;Es liegt eine Erstversorgung bei einer Pauschalversorgungen vor.&quot;);[RULE_ID]:=202974;[RULE_VERSION]:=3389;[RULE_NAME]:=&quot;MB: Prüfe Erstversorgung bei Pauschalversorgungen V 1.0&quot;;[RULE_TYPE]:=&quot;MB&quot;;[RULE_GROUP_NAME]:=&quot;&quot;;[RULE_GROUP_TYPE]:=&quot;&quot;;[RULE_PRODUCT_CATEGORY_ID]:=&quot;0&quot;;[RULE_DEPARTMENT_NAME]:=&quot;&quot;;[EXIT_CATEGORY]:=&quot;&quot;}
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202974&quot;)
+
+
+### ----------------------- END MB: Prüfe Erstversorgung bei Pauschalversorgungen V 1.0 -------------------------
+
+## End  Rules of ruleType NOAUTOGEN
+
+## Start Rules of ruleType NOAUTOGEN PG 01
+
+IF [HM_HMV2] = &quot;01&quot; 
+
+### ----------------------- START MB: Mehr als eine Versorgungseinheit V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;MB: Mehr als eine Versorgungseinheit V1.0&quot;,&quot;V1.0&quot;,&quot;2014-08-26 11:00:04.0&quot;,&quot;&quot;,&quot;133&quot;,&quot;202962&quot;,&quot;01&quot;,&quot;&quot;)
+
+
+1 = 1 AND [KV_ANZAHL_VE] &gt; 1;NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;01-0-133&quot;;[EXIT_CODE]:=&quot;0&quot;;[MESSAGE]:=UDF_MESSAGE_REPLACE(&quot;Mehr als eine Versorgungseinheit nicht für AG erlaubt.&quot;);[RULE_ID]:=202962;[RULE_VERSION]:=3389;[RULE_NAME]:=&quot;MB: Mehr als eine Versorgungseinheit V1.0&quot;;[RULE_TYPE]:=&quot;MB&quot;;[RULE_GROUP_NAME]:=&quot;&quot;;[RULE_GROUP_TYPE]:=&quot;&quot;;[RULE_PRODUCT_CATEGORY_ID]:=&quot;01&quot;;[RULE_DEPARTMENT_NAME]:=&quot;&quot;;[EXIT_CATEGORY]:=&quot;&quot;}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202962&quot;)
+
+
+### ----------------------- END MB: Mehr als eine Versorgungseinheit V1.0 -------------------------
+
+ENDIF # PG 01
+## End Rules of ruleType NOAUTOGEN PG 01
+
+## Start Rules of ruleType NOAUTOGEN PG 21
+
+IF [HM_HMV2] = &quot;21&quot; 
+
+### ----------------------- START MB: Mehr als eine Versorgungseinheit V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;MB: Mehr als eine Versorgungseinheit V1.0&quot;,&quot;V1.0&quot;,&quot;2014-08-26 11:00:04.0&quot;,&quot;&quot;,&quot;133&quot;,&quot;202959&quot;,&quot;21&quot;,&quot;&quot;)
+
+
+1 = 1 AND [KV_ANZAHL_VE] &gt; 1;NOAUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;21-0-133&quot;;[EXIT_CODE]:=&quot;0&quot;;[MESSAGE]:=UDF_MESSAGE_REPLACE(&quot;Mehr als eine Versorgungseinheit nicht für AG erlaubt.&quot;);[RULE_ID]:=202959;[RULE_VERSION]:=3389;[RULE_NAME]:=&quot;MB: Mehr als eine Versorgungseinheit V1.0&quot;;[RULE_TYPE]:=&quot;MB&quot;;[RULE_GROUP_NAME]:=&quot;&quot;;[RULE_GROUP_TYPE]:=&quot;&quot;;[RULE_PRODUCT_CATEGORY_ID]:=&quot;21&quot;;[RULE_DEPARTMENT_NAME]:=&quot;&quot;;[EXIT_CATEGORY]:=&quot;&quot;}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202959&quot;)
+
+
+### ----------------------- END MB: Mehr als eine Versorgungseinheit V1.0 -------------------------
+
+ENDIF # PG 21
+## End Rules of ruleType NOAUTOGEN PG 21
+
+## Start FOOTER GLOBAL Rules of ruleType NOAUTOGEN
+
+### ----------------------- START GLOBAL Appliance noapproval rule -----------------------
+
+
+[MAKE_AUTOGEN] = &quot;NOAUTOGEN&quot;; NOAUTOGEN
+
+
+
+### ----------------------- END GLOBAL Appliance noapproval rule -------------------------
+
+## End FOOTER GLOBAL Rules of ruleType NOAUTOGEN
+
+## Start Rules of ruleType AUTOGEN PG 15
+
+IF [HM_HMV2] = &quot;15&quot; 
+
+### ----------------------- START AG: voller vertragskonformer KV - OHNE Liefergebiet (VE) -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;AG: voller vertragskonformer KV - OHNE Liefergebiet (VE)&quot;,&quot;V1.0&quot;,&quot;2016-02-29 14:20:22.0&quot;,&quot;50.0,150.0&quot;,&quot;248&quot;,&quot;202976&quot;,&quot;15&quot;,&quot;&quot;)
+
+[HAUPT_HM_HMV2] = &quot;15&quot; AND [HAUPT_VP_IKLE] = [LE_IK] AND [HAUPT_VP_KZH] = [HAUPT_HM_KZH] AND ([HAUPT_VP_GLZ] = [HAUPT_HM_GLZ] OR [HAUPT_VP_GLZ] = &quot;&quot; OR [HAUPT_VP_GLZ] = 0) AND [HAUPT_VP_LEGS] = [HAUPT_HM_LEGS] AND [HAUPT_VP_MENGE] = [HAUPT_HM_MENGE] AND ([HAUPT_VP_PRODUKTBES] = [HAUPT_HM_PRODUKTBES] OR [HAUPT_VP_PRODUKTBES] = &quot;&quot; OR [HAUPT_VP_PRODUKTBES] = &quot;0000000000&quot;) AND [HAUPT_HM_MWST]  &lt;= [HAUPT_VP_MWST]  AND UDF_PRUEFE_PREIS([HAUPT_VP_BRUTTO],[HAUPT_VP_NETTO],[HAUPT_HM_BRUTTO],[HAUPT_HM_NETTO],0.5,1.5) = 1;AUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;15-0-248&quot;;[EXIT_CODE]:=&quot;1&quot;;[MESSAGE]:=UDF_MESSAGE_REPLACE(&quot;Voller vertragskonformer KV (Versorgungseinheit)&quot;);[RULE_ID]:=202976;[RULE_VERSION]:=3389;[RULE_NAME]:=&quot;AG: voller vertragskonformer KV - OHNE Liefergebiet (VE)&quot;;[RULE_TYPE]:=&quot;AG&quot;;[RULE_GROUP_NAME]:=&quot;&quot;;[RULE_GROUP_TYPE]:=&quot;&quot;;[RULE_PRODUCT_CATEGORY_ID]:=&quot;15&quot;;[RULE_DEPARTMENT_NAME]:=&quot;&quot;;[EXIT_CATEGORY]:=&quot;&quot;}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202976&quot;)
+
+
+### ----------------------- END AG: voller vertragskonformer KV - OHNE Liefergebiet (VE) -------------------------
+
+ENDIF # PG 15
+## End Rules of ruleType AUTOGEN PG 15
+
+## Start Rules of ruleType AUTOGEN PG 10
+
+IF [HM_HMV2] = &quot;10&quot; 
+
+### ----------------------- START AG: HMV in Liste V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;AG: HMV in Liste V1.0&quot;,&quot;V1.0&quot;,&quot;2014-10-27 09:50:43.0&quot;,&quot;&quot;,&quot;148&quot;,&quot;202965&quot;,&quot;10&quot;,&quot;&quot;)
+
+1 = 1  AND (   ([HM_HMV2] = &quot;10&quot;) );AUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;10-0-148&quot;;[EXIT_CODE]:=&quot;1&quot;;[MESSAGE]:=UDF_MESSAGE_REPLACE(&quot;HMV in der Liste&quot;);[RULE_ID]:=202965;[RULE_VERSION]:=3389;[RULE_NAME]:=&quot;AG: HMV in Liste V1.0&quot;;[RULE_TYPE]:=&quot;AG&quot;;[RULE_GROUP_NAME]:=&quot;&quot;;[RULE_GROUP_TYPE]:=&quot;&quot;;[RULE_PRODUCT_CATEGORY_ID]:=&quot;10&quot;;[RULE_DEPARTMENT_NAME]:=&quot;&quot;;[EXIT_CATEGORY]:=&quot;&quot;}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202965&quot;)
+
+
+### ----------------------- END AG: HMV in Liste V1.0 -------------------------
+
+### ----------------------- START AG: Folgefallpauschale V1.0 -----------------------
+
+UDF_RULE_LOGGING_HEAD([X3_ID],[VE_ID],[POS_ID],&quot;&quot;,&quot;&quot;,&quot;AG: Folgefallpauschale V1.0&quot;,&quot;V1.0&quot;,&quot;2014-10-28 09:06:33.0&quot;,&quot;&quot;,&quot;175&quot;,&quot;202973&quot;,&quot;10&quot;,&quot;&quot;)
+
+
+[POS_NR] = 1 AND [HM_LE_SET_ID] &lt;&gt; &quot;&quot; AND  [HM_LE_SET_ID] &lt;&gt; 0 AND [HM_KZH] = &quot;09&quot;;AUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;10-0-175&quot;;[EXIT_CODE]:=&quot;1&quot;;[MESSAGE]:=UDF_MESSAGE_REPLACE(&quot;Folgefallpauschale gefunden&quot;);[RULE_ID]:=202973;[RULE_VERSION]:=3389;[RULE_NAME]:=&quot;AG: Folgefallpauschale V1.0&quot;;[RULE_TYPE]:=&quot;AG&quot;;[RULE_GROUP_NAME]:=&quot;&quot;;[RULE_GROUP_TYPE]:=&quot;&quot;;[RULE_PRODUCT_CATEGORY_ID]:=&quot;10&quot;;[RULE_DEPARTMENT_NAME]:=&quot;&quot;;[EXIT_CATEGORY]:=&quot;&quot;}
+
+UDF_RULE_LOGGING_FOOTER([X3_ID],[VE_ID],[POS_ID],&quot;202973&quot;)
+
+
+### ----------------------- END AG: Folgefallpauschale V1.0 -------------------------
+
+ENDIF # PG 10
+## End Rules of ruleType AUTOGEN PG 10
+
+## Start FOOTER GLOBAL Rules of ruleType AUTOGEN
+
+### ----------------------- START GLOBAL Appliance approval rule -----------------------
+
+[MAKE_AUTOGEN] = &quot;AUTOGEN&quot;; AUTOGEN
+
+
+### ----------------------- END GLOBAL Appliance approval rule -------------------------
+
+## End FOOTER GLOBAL Rules of ruleType AUTOGEN
+
+
+ENDIF # CARE
+
+
+# END Rules of CARE
+
+# START Rules of NO_APPROVAL_CARE
+
+
+# Start IF for NO_APPROVAL_CARE
+IF [IS_NGPV] = 1 AND ([X3_PROCESS] = &quot;versorgung&quot; AND [X3_STEP] = &quot;neu&quot;) AND [HAUPT_HM_KZH] &lt;&gt; &quot;01&quot; AND [HAUPT_HM_KZH] &lt;&gt; &quot;18&quot;  AND [HAUPT_HM_KZH] &lt;&gt; &quot;13&quot; AND [HAUPT_HM_KZH] &lt;&gt; &quot;14&quot; AND [HAUPT_HM_KZH] &lt;&gt; &quot;15&quot;
+
+## Start FOOTER GLOBAL Rules of ruleType AUTOGEN
+
+### ----------------------- START GLOBAL NGPV Alles AG Regel -----------------------
+
+1 = 1 AND [IS_NGPV] = 1;AUTOGEN =&gt; ASSIGN{[EXIT_GROUP]:=&quot;Non editable-14&quot;;[EXIT_CODE]:=&quot;0&quot;;[RULE_ID]:=199935;[RULE_VERSION]:=3309;[MESSAGE]:=&quot;Eintrag in der NGPV-Hilfsmittelliste&quot;} 
+
+
+
+### ----------------------- END GLOBAL NGPV Alles AG Regel -------------------------
+
+## End FOOTER GLOBAL Rules of ruleType AUTOGEN
+
+
+ENDIF # NO_APPROVAL_CARE
+
+
+# END Rules of NO_APPROVAL_CARE
+
+# START Rules of RECOVERY
+
+
+# Start IF for RECOVERY
+IF ([X3_PROCESS] = &quot;rueckholung&quot; AND [X3_STEP] = &quot;genehmigung&quot;)
+
+## Start FOOTER GLOBAL Rules of ruleType NOAUTOGEN
+
+### ----------------------- START GLOBAL WRITE AUTO_RETURN_CHECK_MESSAGE -----------------------
+
+[AUTORETURN_SUPPLY_UNIT_IS_READY] = 0 ; ASSIGN{[MESSAGE]:=[AUTO_RETURN_CHECK_MESSAGE]}
+
+
+### ----------------------- END GLOBAL WRITE AUTO_RETURN_CHECK_MESSAGE -------------------------
+
+## End FOOTER GLOBAL Rules of ruleType NOAUTOGEN
+
+
+ENDIF # RECOVERY
+
+
+# END Rules of RECOVERY
+</body>
+<activationMode>null</activationMode>
+
+</rulefile>
+</rulefiles>

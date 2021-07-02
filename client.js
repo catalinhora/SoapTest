@@ -1,7 +1,6 @@
 "use strict";
 
 var soap = require('strong-soap').soap;
-const fs = require('fs');
 var assert = require('assert');
 var paramData = require('./helpers/helpers.js');
 const chalk = require('chalk');
