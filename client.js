@@ -45,12 +45,13 @@ soap.createClient(url, options, function(err, client) {
   });
 });
 
-// soap.createClient(url, options, function(err, client) {
-//   var method = client['makeFull'];
-//   method(paramData, function(err, result, envelope, soapHeader) {
-//     //response envelope
-//     console.log('Response Envelope: \n' + envelope);
-//     //'result' is the response body
-//     console.log('Result: \n' + JSON.stringify(result));
-//   });
-// });
+var options = {};
+soap.createClient(url, options, function(err, client) {
+  var method = client['makeFull'];
+  method(paramData.requestArgsMakeFull, function(err, result, envelope, soapHeader) {
+    //response envelope
+    console.log('Response Envelope: \n' + envelope);
+    //'result' is the response body
+    console.log('Result: \n' + JSON.stringify(result));
+  });
+});

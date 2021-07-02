@@ -1,5 +1,6 @@
 const fs = require('fs');
-const xml = fs.readFileSync('./testData/Rulefiles.xml', 'utf-8');
+const xml = fs.readFileSync('./testData/rulefiles.xml', 'utf-8');
+const xmlMakeFull = fs.readFileSync('./testData/makeFull.xml', 'utf-8')
 
 const requestArgsChangeRuleFile = {
   kt_ik: '354500000',
@@ -15,17 +16,17 @@ const requestArgsChangeRuleFile = {
   channel: 'himi'
 };
 
-// const requestArgsMakeFull = {
-//     kt_ik: '354500000',
-//     x3_id: '',
-//     xvd_kt_id: '',
-//     x3_xml: textF,
-//     channel: 'himi'
-// };
+const requestArgsMakeFull = {
+    kt_ik: '354500000',
+    x3_id: '',
+    xvd_kt_id: '',
+    x3_xml: xmlMakeFull,
+    channel: 'himi'
+};
 
 module.exports = {
     requestArgsChangeRuleFile: requestArgsChangeRuleFile,
     requestArgsShowRuleFile: requestArgsShowRuleFile,
- //   requestArgsMakeFull: requestArgsMakeFull
+    requestArgsMakeFull: requestArgsMakeFull
 };
 
