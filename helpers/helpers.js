@@ -1,10 +1,10 @@
 const fs = require('fs');
-const xml = fs.readFileSync('./testData/rulefilesBarmer.xml', 'utf-8');
+const xmlRuleFilesBarmer = fs.readFileSync('./testData/rulefilesBarmer.xml', 'utf-8');
 const xmlMakeFull = fs.readFileSync('./testData/makeFull.xml', 'utf-8')
 
 const requestArgsChangeRuleFile = {
   kt_ik: '104940005',
-  rules_xml: xml,
+  rules_xml: xmlRuleFilesBarmer,
   user: 'system',
   channel: 'himi',
   mode: ''

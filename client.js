@@ -26,11 +26,13 @@ soap.createClient(url, options, function(err, client) {
     method(paramData.requestArgsChangeRuleFile, function(err, result, envelope, soapHeader) {
     //response envelope
     console.log('Response Envelope: \n' + envelope);
-    //'result' is the response body
-    console.log('Result: \n' + JSON.stringify(result));
+    var changeRuleStatusResult = result.changeRulefilesResult.status
+    assert.strictEqual(changeRuleStatusResult, true, `Status Result is: ${em(result.changeRulefilesResult.status)} instead of true`);
     });
    });
-  }
+  } else {
+    throw new Error(`Status result for status method is: ${em(statusResult)}`);
+  };
  });
 });
 
@@ -50,7 +52,8 @@ soap.createClient(url, options, function(err, client) {
   method(paramData.requestArgsMakeFull, function(err, result, envelope, soapHeader) {
     //response envelope
     console.log('Response Envelope: \n' + envelope);
-    //'result' is the response body
-    console.log('Result: \n' + JSON.stringify(result));
+    //result in the response body
+    var makeFullResponse = result.makeFullResult.includes('autogenehmigung');
+    assert.deepStrictEqual(makeFullResponse, true, `Got: ${em()}, there is no match in the result response body!`);
   });
 });
